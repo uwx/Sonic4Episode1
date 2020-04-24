@@ -850,6 +850,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AppMain\Types\_nnCalcMotionRotate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CPadPolarHandle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CPadVirtualPad.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FUCK\XNullable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gs\SBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gs\SDebug.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)gs\SRemaster.cs" />

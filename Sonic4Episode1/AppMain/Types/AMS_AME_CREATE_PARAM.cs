@@ -24,6 +24,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using mpp;
 using setting;
+using Sonic4Episode1.Core.FUCK;
 
 public partial class AppMain
 {
@@ -33,10 +34,10 @@ public partial class AppMain
         public AppMain.AMS_AME_RUNTIME runtime;
         public AppMain.AMS_AME_NODE node;
         public AppMain.AMS_AME_RUNTIME_WORK work;
-        public AppMain.NNS_VECTOR4D position;
-        public AppMain.NNS_VECTOR4D velocity;
-        public AppMain.NNS_VECTOR4D parent_position;
-        public AppMain.NNS_VECTOR4D parent_velocity;
+        public XNullable<AppMain.NNS_VECTOR4D> position;
+        public XNullable<AppMain.NNS_VECTOR4D> velocity;
+        public XNullable<AppMain.NNS_VECTOR4D> parent_position;
+        public XNullable<AppMain.NNS_VECTOR4D> parent_velocity;
 
         public void Clear()
         {
@@ -44,10 +45,10 @@ public partial class AppMain
             this.runtime = (AppMain.AMS_AME_RUNTIME)null;
             this.node = (AppMain.AMS_AME_NODE)null;
             this.work = (AppMain.AMS_AME_RUNTIME_WORK)null;
-            this.position = (AppMain.NNS_VECTOR4D)null;
-            this.velocity = (AppMain.NNS_VECTOR4D)null;
-            this.parent_position = (AppMain.NNS_VECTOR4D)null;
-            this.parent_velocity = (AppMain.NNS_VECTOR4D)null;
+            this.position = default;
+            this.velocity = default;
+            this.parent_position = default;
+            this.parent_velocity = default;
         }
     }
 }

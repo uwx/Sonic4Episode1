@@ -29,9 +29,9 @@ public partial class AppMain
 {
     public class NNS_CAMERA_TARGET_UPTARGET
     {
-        public readonly AppMain.NNS_VECTOR Position = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR Target = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR UpTarget = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Position = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Target = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR UpTarget = new AppMain.NNS_VECTOR();
         public uint User;
         public int Fovy;
         public float Aspect;

@@ -70,9 +70,9 @@ public partial class AppMain
       AppMain.NNS_VECTOR vec,
       AppMain.NNS_VECTOR trans)
     {
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        new AppMain.NNS_VECTOR();
+        new AppMain.NNS_VECTOR();
+        new AppMain.NNS_VECTOR();
         AppMain.mppAssertNotImpl();
     }
 
@@ -1257,14 +1257,14 @@ public partial class AppMain
             AppMain.nnSinCos(0, out s2, out c2);
             for (int index2 = 0; index2 < 20; ++index2)
             {
-                ((AppMain.NNS_VECTOR)~_pointer1).x = c2 * c1 + num1;
-                ((AppMain.NNS_VECTOR)~_pointer1).y = s2 + num2;
-                ((AppMain.NNS_VECTOR)~_pointer1).z = c2 * s1 + num3;
+                _pointer1.Get().x = c2 * c1 + num1;
+                _pointer1.Get().y = s2 + num2;
+                _pointer1.Get().z = c2 * s1 + num3;
                 AppMain.ArrayPointer<AppMain.NNS_VECTOR> _pointer2 = ++(_pointer1);
                 AppMain.nnSinCos(AppMain.NNM_DEGtoA32((int)((double)(index2 + 1) * 360.0 / 20.0)), out s2, out c2);
-                ((AppMain.NNS_VECTOR)~_pointer2).x = c2 * c1 + num1;
-                ((AppMain.NNS_VECTOR)~_pointer2).y = s2 + num2;
-                ((AppMain.NNS_VECTOR)~_pointer2).z = c2 * s1 + num3;
+                _pointer2.Get().x = c2 * c1 + num1;
+                _pointer2.Get().y = s2 + num2;
+                _pointer2.Get().z = c2 * s1 + num3;
                 _pointer1 = ++(_pointer2);
             }
         }
@@ -1274,14 +1274,14 @@ public partial class AppMain
             AppMain.nnSinCos(0, out s2, out c2);
             for (int index2 = 0; index2 < 20; ++index2)
             {
-                ((AppMain.NNS_VECTOR)~_pointer1).x = c1 * c2 + num1;
-                ((AppMain.NNS_VECTOR)~_pointer1).y = s1 + num2;
-                ((AppMain.NNS_VECTOR)~_pointer1).z = c1 * s2 + num3;
+                _pointer1.Get().x = c1 * c2 + num1;
+                _pointer1.Get().y = s1 + num2;
+                _pointer1.Get().z = c1 * s2 + num3;
                 AppMain.ArrayPointer<AppMain.NNS_VECTOR> _pointer2 = ++(_pointer1);
                 AppMain.nnSinCos(AppMain.NNM_DEGtoA32((int)((double)(index2 + 1) * 360.0 / 20.0)), out s2, out c2);
-                ((AppMain.NNS_VECTOR)~_pointer2).x = c1 * c2 + num1;
-                ((AppMain.NNS_VECTOR)~_pointer2).y = s1 + num2;
-                ((AppMain.NNS_VECTOR)~_pointer2).z = c1 * s2 + num3;
+                _pointer2.Get().x = c1 * c2 + num1;
+                _pointer2.Get().y = s1 + num2;
+                _pointer2.Get().z = c1 * s2 + num3;
                 _pointer1 = ++(_pointer2);
             }
         }
@@ -1309,7 +1309,7 @@ public partial class AppMain
       int trans)
     {
         AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        new AppMain.NNS_VECTOR();
         AppMain.mppAssertNotImpl();
     }
 
@@ -2088,10 +2088,10 @@ public partial class AppMain
 
     private void nnCalcMatrixPaletteLinkMotionNode(int nodeIdx)
     {
-        AppMain.NNS_VECTOR tv1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR sv1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR tv2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR sv2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR tv1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR sv1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR tv2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR sv2 = new AppMain.NNS_VECTOR();
         AppMain.NNS_QUATERNION nnsQuaternion1 = new AppMain.NNS_QUATERNION();
         AppMain.NNS_QUATERNION nnsQuaternion2 = new AppMain.NNS_QUATERNION();
         AppMain.NNS_TRS nnsTrs = new AppMain.NNS_TRS();
@@ -2164,10 +2164,10 @@ public partial class AppMain
             nodeIdx = (int)nnsNode.iSibling;
         }
         while (nnsNode.iSibling != (short)-1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv2);
     }
 
     private void nnCalcMatrixTRSList1BoneXSIIK(

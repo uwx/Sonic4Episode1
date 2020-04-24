@@ -30,7 +30,7 @@ public partial class AppMain
     public class NNS_LIGHT_STANDARD_GL
     {
         public readonly AppMain.NNS_VECTOR4D Position = new AppMain.NNS_VECTOR4D();
-        public readonly AppMain.NNS_VECTOR SpotDirection = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR SpotDirection = new AppMain.NNS_VECTOR();
         public uint User;
         public AppMain.NNS_RGBA Ambient;
         public AppMain.NNS_RGBA Diffuse;

@@ -29,9 +29,9 @@ public partial class AppMain
 {
     public class AMS_AME_NODE_MODEL : AppMain.AMS_AME_NODE_TR_ROT
     {
-        public readonly AppMain.NNS_VECTOR4D rotate_axis = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        public readonly AppMain.NNS_VECTOR4D scale_start = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        public readonly AppMain.NNS_VECTOR4D scale_end = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public readonly AppMain.NNS_VECTOR4D rotate_axis = new AppMain.NNS_VECTOR4D();
+        public readonly AppMain.NNS_VECTOR4D scale_start = new AppMain.NNS_VECTOR4D();
+        public readonly AppMain.NNS_VECTOR4D scale_end = new AppMain.NNS_VECTOR4D();
         public char[] model_name = new char[8];
         public float z_bias;
         public float inheritance_rate;

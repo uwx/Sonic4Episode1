@@ -78,7 +78,7 @@ public partial class AppMain
                 prim.format3D = 4;
                 uint num1 = 0;
                 float num2 = (float)((double)AppMain.fmod(syncTime, gmsDecoFallManager.frame) / (double)gmsDecoFallManager.frame * 5.02799081802368);
-                AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+                AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
                 AppMain.VecFx32 vecFx32_2 = new AppMain.VecFx32();
                 for (uint index2 = 0; index2 < 8U; ++index2)
                 {
@@ -107,7 +107,7 @@ public partial class AppMain
                         ++num1;
                     }
                 }
-                AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+                //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
                 AppMain.amMatrixPush(nnsMatrix);
                 AppMain.GlobalPool<AppMain.NNS_MATRIX>.Release(nnsMatrix);
                 AppMain.ObjDraw3DNNDrawPrimitive(prim, command, 0, 0);
@@ -247,13 +247,13 @@ public partial class AppMain
     private static void GmDecoSetLightFinalZone()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = 0.0f;
         nnsVector.y = -0.3f;
         nnsVector.z = -0.4f;
         AppMain.nnNormalizeVector(nnsVector, nnsVector);
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_2, ref col, 0.8f, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private static void gmDecoDeleteTcbPost()

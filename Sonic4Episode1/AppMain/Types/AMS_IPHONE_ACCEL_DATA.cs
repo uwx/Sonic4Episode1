@@ -29,8 +29,8 @@ public partial class AppMain
 {
     private class AMS_IPHONE_ACCEL_DATA
     {
-        public readonly AppMain.NNS_VECTOR core = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR sensor = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR core = new AppMain.NNS_VECTOR();
+        public readonly AppMain.NNS_VECTOR sensor = new AppMain.NNS_VECTOR();
         public int rot_x;
         public int rot_y;
         public int rot_z;

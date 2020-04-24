@@ -29,10 +29,10 @@ public partial class AppMain
 {
     public class NNS_NODE
     {
-        public readonly AppMain.NNS_VECTOR Translation = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR Scaling = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_MATRIX InvInitMtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
-        public readonly AppMain.NNS_VECTOR Center = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Translation = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Scaling = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_MATRIX InvInitMtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
+        public AppMain.NNS_VECTOR Center = new AppMain.NNS_VECTOR();
         public uint fType;
         public short iMatrix;
         public short iParent;
@@ -47,14 +47,8 @@ public partial class AppMain
 
         public float BoundingBoxX
         {
-            get
-            {
-                return this.SIIKBoneLength;
-            }
-            set
-            {
-                this.SIIKBoneLength = value;
-            }
+            get { return this.SIIKBoneLength; }
+            set { this.SIIKBoneLength = value; }
         }
 
         public NNS_NODE()
@@ -100,6 +94,7 @@ public partial class AppMain
                 this.BoundingBoxY = node.BoundingBoxY;
                 this.BoundingBoxZ = node.BoundingBoxZ;
             }
+
             return this;
         }
 
@@ -112,44 +107,49 @@ public partial class AppMain
                 iParent = reader.ReadInt16(),
                 iChild = reader.ReadInt16(),
                 iSibling = reader.ReadInt16(),
-                Translation = {
-          x = reader.ReadSingle(),
-          y = reader.ReadSingle(),
-          z = reader.ReadSingle()
-        },
-                Rotation = {
-          x = reader.ReadInt32(),
-          y = reader.ReadInt32(),
-          z = reader.ReadInt32()
-        },
-                Scaling = {
-          x = reader.ReadSingle(),
-          y = reader.ReadSingle(),
-          z = reader.ReadSingle()
-        },
-                InvInitMtx = {
-          M00 = reader.ReadSingle(),
-          M10 = reader.ReadSingle(),
-          M20 = reader.ReadSingle(),
-          M30 = reader.ReadSingle(),
-          M01 = reader.ReadSingle(),
-          M11 = reader.ReadSingle(),
-          M21 = reader.ReadSingle(),
-          M31 = reader.ReadSingle(),
-          M02 = reader.ReadSingle(),
-          M12 = reader.ReadSingle(),
-          M22 = reader.ReadSingle(),
-          M32 = reader.ReadSingle(),
-          M03 = reader.ReadSingle(),
-          M13 = reader.ReadSingle(),
-          M23 = reader.ReadSingle(),
-          M33 = reader.ReadSingle()
-        },
-                Center = {
-          x = reader.ReadSingle(),
-          y = reader.ReadSingle(),
-          z = reader.ReadSingle()
-        },
+                Translation =
+                {
+                    x = reader.ReadSingle(),
+                    y = reader.ReadSingle(),
+                    z = reader.ReadSingle()
+                },
+                Rotation =
+                {
+                    x = reader.ReadInt32(),
+                    y = reader.ReadInt32(),
+                    z = reader.ReadInt32()
+                },
+                Scaling =
+                {
+                    x = reader.ReadSingle(),
+                    y = reader.ReadSingle(),
+                    z = reader.ReadSingle()
+                },
+                InvInitMtx =
+                {
+                    M00 = reader.ReadSingle(),
+                    M10 = reader.ReadSingle(),
+                    M20 = reader.ReadSingle(),
+                    M30 = reader.ReadSingle(),
+                    M01 = reader.ReadSingle(),
+                    M11 = reader.ReadSingle(),
+                    M21 = reader.ReadSingle(),
+                    M31 = reader.ReadSingle(),
+                    M02 = reader.ReadSingle(),
+                    M12 = reader.ReadSingle(),
+                    M22 = reader.ReadSingle(),
+                    M32 = reader.ReadSingle(),
+                    M03 = reader.ReadSingle(),
+                    M13 = reader.ReadSingle(),
+                    M23 = reader.ReadSingle(),
+                    M33 = reader.ReadSingle()
+                },
+                Center =
+                {
+                    x = reader.ReadSingle(),
+                    y = reader.ReadSingle(),
+                    z = reader.ReadSingle()
+                },
                 Radius = reader.ReadSingle(),
                 User = reader.ReadUInt32(),
                 BoundingBoxX = reader.ReadSingle(),

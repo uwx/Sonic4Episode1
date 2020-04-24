@@ -259,7 +259,7 @@ public partial class AppMain
         }
         else
         {
-            AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
             nnsVector.x = AppMain.FXM_FX32_TO_FLOAT(playerObj1.obj_work.pos.x);
             nnsVector.y = AppMain.FXM_FX32_TO_FLOAT(-playerObj1.obj_work.pos.y + 24576);
             nnsVector.z = AppMain.FXM_FX32_TO_FLOAT(playerObj1.obj_work.pos.z);
@@ -349,7 +349,7 @@ public partial class AppMain
             }
             AppMain.g_gm_main_system.map_fcol.left = AppMain.gm_boss4_n_scroll_pt_x - (int)((double)(AppMain.AMD_SCREEN_2D_WIDTH / 2f) * 0.674383342266083) - 48;
             AppMain.g_gm_main_system.map_fcol.right = AppMain.gm_boss4_n_scroll_pt_x + (int)((double)(AppMain.AMD_SCREEN_2D_WIDTH / 2f) * 0.674383342266083);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 

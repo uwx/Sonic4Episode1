@@ -219,9 +219,20 @@ public partial class AppMain
     }
 
     public static void amVectorAdd(
-      ref AppMain.SNNS_VECTOR4D pDst,
-      ref AppMain.SNNS_VECTOR4D pV1,
-      ref AppMain.SNNS_VECTOR4D pV2)
+        ref AppMain.SNNS_VECTOR4D pDst,
+        ref AppMain.SNNS_VECTOR4D pV1,
+        ref AppMain.SNNS_VECTOR4D pV2)
+    {
+        pDst.x = pV1.x + pV2.x;
+        pDst.y = pV1.y + pV2.y;
+        pDst.z = pV1.z + pV2.z;
+        pDst.w = pV1.w;
+    }
+
+    public static void amVectorAdd(
+        ref AppMain.NNS_VECTOR4D pDst,
+        ref AppMain.NNS_VECTOR4D pV1,
+        ref AppMain.NNS_VECTOR4D pV2)
     {
         pDst.x = pV1.x + pV2.x;
         pDst.y = pV1.y + pV2.y;

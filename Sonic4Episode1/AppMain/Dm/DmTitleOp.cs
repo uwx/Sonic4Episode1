@@ -98,7 +98,7 @@ public partial class AppMain
     private void DmTitleOpInit()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.Clear();
         AppMain.NNS_VECTOR pos = new AppMain.NNS_VECTOR(0.0f, 0.0f, 50f);
         AppMain.g_obj.flag = 4259848U;
@@ -130,7 +130,7 @@ public partial class AppMain
         obsCamera.znear = 0.1f;
         obsCamera.zfar = 32768f;
         this.dmTitleOpMgrInit();
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private void DmTitleOpExit()

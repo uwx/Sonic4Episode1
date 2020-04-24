@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class AMS_AME_NODE_UNIFORM : AppMain.AMS_AME_NODE
     {
-        public readonly AppMain.NNS_VECTOR4D direction = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public readonly AppMain.NNS_VECTOR4D direction = new AppMain.NNS_VECTOR4D();
         public float magnitude;
     }
 }

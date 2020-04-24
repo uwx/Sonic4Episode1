@@ -30,7 +30,7 @@ public partial class AppMain
     public class GMS_MAP_FAR_DATA
     {
         public readonly AppMain.OBS_OBJECT_WORK[] obj_work = new AppMain.OBS_OBJECT_WORK[16];
-        public readonly AppMain.NNS_VECTOR pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR pos = new AppMain.NNS_VECTOR();
         public AppMain.AMS_AMB_HEADER amb_header;
         public AppMain.OBS_ACTION3D_NN_WORK[] obj_3d_list;
         public AppMain.OBS_ACTION3D_NN_WORK[] obj_3d_list_render;

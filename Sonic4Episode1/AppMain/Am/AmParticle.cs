@@ -158,7 +158,7 @@ public partial class AppMain
       AppMain.AMS_AME_RUNTIME runtime,
       AppMain.AMS_AME_RUNTIME_WORK work)
     {
-        AppMain.NNS_VECTOR4D pVec = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D pVec = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorInit(pVec);
         AppMain.AMS_AME_CREATE_PARAM amsAmeCreateParam = AppMain.GlobalPool<AppMain.AMS_AME_CREATE_PARAM>.Alloc();
         amsAmeCreateParam.ecb = runtime.ecb;
@@ -247,7 +247,7 @@ public partial class AppMain
             }
         }
         AppMain.GlobalPool<AppMain.AMS_AME_CREATE_PARAM>.Release(amsAmeCreateParam);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(pVec);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(pVec);
     }
 
 }

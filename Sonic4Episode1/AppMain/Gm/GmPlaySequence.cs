@@ -5454,12 +5454,12 @@ public partial class AppMain
 
         if (((int)num4 & 16383) != 0)
         {
-            AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-            AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-            AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-            AppMain.NNS_VECTOR nnsVector4 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-            AppMain.NNS_VECTOR nnsVector5 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-            AppMain.NNS_VECTOR vec2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+            AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+            AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
+            AppMain.NNS_VECTOR nnsVector4 = new AppMain.NNS_VECTOR();
+            AppMain.NNS_VECTOR nnsVector5 = new AppMain.NNS_VECTOR();
+            AppMain.NNS_VECTOR vec2 = new AppMain.NNS_VECTOR();
             switch (((int)num4 & 49152) >> 14)
             {
                 case 0:
@@ -5500,12 +5500,12 @@ public partial class AppMain
             nnsVector4.z = nnsVector1.z + nnsVector5.z * num5;
             num2 = AppMain.FXM_FLOAT_TO_FX32(nnsVector4.x);
             num3 = AppMain.FXM_FLOAT_TO_FX32(-nnsVector4.y);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector4);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector5);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(vec2);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector4);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector5);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(vec2);
         }
         else
         {

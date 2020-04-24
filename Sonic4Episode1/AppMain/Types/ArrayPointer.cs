@@ -108,6 +108,11 @@ public partial class AppMain
         {
             return _pointer.array[_pointer.offset];
         }
+        
+        public ref T Get()
+        {
+            return ref array[offset];
+        }
 
         public T this[int _index]
         {

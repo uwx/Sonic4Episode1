@@ -73,14 +73,14 @@ public partial class AppMain
         float f32_4 = AppMain.FX_FX32_TO_F32(target_obj_work.pos.y);
         float x3 = f32_1 - f32_3;
         float y = f32_2 - f32_4;
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         AppMain.amVectorSet(nnsVector, x3, y, 0.0f);
         float num2 = 1f / AppMain.nnLengthVector(nnsVector);
         float x4 = x3 * num2 * num1;
         float x5 = y * num2 * num1;
         target_obj_work.spd.x = AppMain.FX_F32_TO_FX32(x4);
         target_obj_work.spd.y = AppMain.FX_F32_TO_FX32(x5);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         return true;
     }
 

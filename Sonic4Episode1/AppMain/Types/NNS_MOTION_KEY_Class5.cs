@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class NNS_MOTION_KEY_Class5
     {
-        public readonly AppMain.NNS_VECTOR Value = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Value = new AppMain.NNS_VECTOR();
         public float Frame;
 
         public NNS_MOTION_KEY_Class5()

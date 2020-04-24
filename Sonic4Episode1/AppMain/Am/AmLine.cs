@@ -26,10 +26,10 @@ public partial class AppMain
         AppMain.AMS_RGBA8888 outsideColorStart = node.outside_color_start;
         outsideColorStart.a = (byte)((int)outsideColorStart.a * amsAmeCreateParam.ecb.transparency >> 8);
         work.set_outside_color(outsideColorStart.color);
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(ref work.position, ref amsAmeCreateParam.parent_position.UnsafeValue, ref amsAmeCreateParam.position.UnsafeValue);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         if (((int)node.flag & 32768) != 0)
         {
             work.tex_time = 0.0f;
@@ -82,7 +82,7 @@ public partial class AppMain
         float num6 = node.outside_width_start * sizeRate;
         float num7 = node.inside_width_end * sizeRate;
         float num8 = node.outside_width_end * sizeRate;
-        AppMain.NNS_VECTOR4D nnsVectoR4D = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D = new AppMain.NNS_VECTOR4D();
         for (; next != activeTail; next = next.next)
         {
             AppMain.AMS_AME_RUNTIME_WORK_LINE ameRuntimeWorkLine = (AppMain.AMS_AME_RUNTIME_WORK_LINE)(AppMain.AMS_AME_RUNTIME_WORK)next;
@@ -154,7 +154,7 @@ public partial class AppMain
                 }
             }
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
         return 0;
     }
 

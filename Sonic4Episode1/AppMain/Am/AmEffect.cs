@@ -568,10 +568,10 @@ public partial class AppMain
             return;
         if ((double)ecb.bounding.radius > 0.0)
         {
-            AppMain.NNS_VECTOR4D pPos = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+            AppMain.NNS_VECTOR4D pPos = new AppMain.NNS_VECTOR4D();
             if (AppMain._amEffectFrustumCulling(pPos, AppMain._am_view_frustum, ecb.bounding) == 0)
                 return;
-            AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(pPos);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(pPos);
         }
         for (AppMain.AMS_AME_ENTRY amsAmeEntry = ecb.entry_head; amsAmeEntry != null; amsAmeEntry = (AppMain.AMS_AME_ENTRY)amsAmeEntry.next)
         {

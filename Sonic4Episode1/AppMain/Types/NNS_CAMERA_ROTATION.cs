@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class NNS_CAMERA_ROTATION
     {
-        public readonly AppMain.NNS_VECTOR Position = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR Position = new AppMain.NNS_VECTOR();
         public readonly AppMain.NNS_ROTATE_A32 Rotation = new AppMain.NNS_ROTATE_A32();
         public uint User;
         public int Fovy;

@@ -496,20 +496,20 @@ public partial class AppMain
     private static bool gmBoss1BodyUpdateRush(AppMain.GMS_BOSS1_BODY_WORK body_work)
     {
         AppMain.OBS_OBJECT_WORK obj_work = AppMain.GMM_BS_OBJ((object)body_work);
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
         AppMain.amVectorSet(nnsVector1, AppMain.FX_FX32_TO_F32(body_work.bash_targ_pos.x) - AppMain.FX_FX32_TO_F32(obj_work.pos.x), AppMain.FX_FX32_TO_F32(body_work.bash_targ_pos.y) - AppMain.FX_FX32_TO_F32(obj_work.pos.y), 0.0f);
         AppMain.amVectorSet(nnsVector2, AppMain.FX_FX32_TO_F32(obj_work.spd.x), AppMain.FX_FX32_TO_F32(obj_work.spd.y), 0.0f);
         if (0.0 >= (double)AppMain.nnDotProductVector(nnsVector2, nnsVector1))
         {
             AppMain.GmBsCmnSetObjSpdZero(obj_work);
             AppMain.VEC_Set(ref obj_work.pos, body_work.bash_targ_pos.x, body_work.bash_targ_pos.y, body_work.bash_targ_pos.z);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
             return true;
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
         return false;
     }
 

@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class AMS_AME_BOUNDING
     {
-        public readonly AppMain.NNS_VECTOR4D center = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public AppMain.NNS_VECTOR4D center = new AppMain.NNS_VECTOR4D();
         public float radius;
         public float radius2;
 

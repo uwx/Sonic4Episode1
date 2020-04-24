@@ -58,7 +58,7 @@ public partial class AppMain
         AppMain.ObjRectAtkSet(pRec, (ushort)0, (short)0);
         AppMain.ObjRectWorkSet(pRec, (short)-64, (short)-64, (short)64, (short)64);
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = -0.85f;
         nnsVector.y = -0.45f;
         nnsVector.z = -3.05f;
@@ -703,10 +703,10 @@ public partial class AppMain
     {
         AppMain.GMS_GMK_TRUCK_WORK parentObj = (AppMain.GMS_GMK_TRUCK_WORK)obj_work.parent_obj;
         AppMain.NNS_MATRIX userWorkObject = (AppMain.NNS_MATRIX)obj_work.user_work_OBJECT;
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         if (obj_work.parent_obj == null)
         {
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
         else
         {
@@ -736,7 +736,7 @@ public partial class AppMain
             AppMain.GmComEfctSetDispOffsetF((AppMain.GMS_EFFECT_3DES_WORK)obj_work, nnsVector.x, nnsVector.y, nnsVector.z);
             AppMain.GmComEfctSetDispRotation((AppMain.GMS_EFFECT_3DES_WORK)obj_work, (ushort)0, (ushort)0, dir_z);
             AppMain.ObjDrawActionSummary(obj_work);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 

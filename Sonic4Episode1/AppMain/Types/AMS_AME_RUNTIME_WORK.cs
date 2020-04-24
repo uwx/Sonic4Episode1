@@ -29,8 +29,8 @@ public partial class AppMain
 {
     public class AMS_AME_RUNTIME_WORK : AppMain.AMS_AME_LIST
     {
-        public readonly AppMain.NNS_VECTOR4D position = new AppMain.NNS_VECTOR4D();
-        public readonly AppMain.NNS_VECTOR4D velocity = new AppMain.NNS_VECTOR4D();
+        public AppMain.NNS_VECTOR4D position = new AppMain.NNS_VECTOR4D();
+        public AppMain.NNS_VECTOR4D velocity = new AppMain.NNS_VECTOR4D();
         public readonly AppMain.NNS_QUATERNION[] rotate = new AppMain.NNS_QUATERNION[1];
         public readonly byte[] dummy = new byte[64];
         public float time;

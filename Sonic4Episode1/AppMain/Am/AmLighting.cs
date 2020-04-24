@@ -17,10 +17,10 @@ public partial class AppMain
         AppMain.AMS_AME_NODE_OMNI node = (AppMain.AMS_AME_NODE_OMNI)amsAmeCreateParam.node;
         AppMain.AMS_AME_RUNTIME_WORK_OMNI work = (AppMain.AMS_AME_RUNTIME_WORK_OMNI)amsAmeCreateParam.work;
         work.time = -node.start_time;
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(ref work.position, ref amsAmeCreateParam.parent_position.UnsafeValue, ref amsAmeCreateParam.position.UnsafeValue);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         float sizeRate = amsAmeCreateParam.ecb.size_rate;
         work.offset = node.offset * sizeRate;
@@ -99,10 +99,10 @@ public partial class AppMain
         AppMain.AMS_AME_NODE_DIRECTIONAL node = (AppMain.AMS_AME_NODE_DIRECTIONAL)amsAmeCreateParam.node;
         AppMain.AMS_AME_RUNTIME_WORK_DIRECTIONAL work = (AppMain.AMS_AME_RUNTIME_WORK_DIRECTIONAL)amsAmeCreateParam.work;
         work.time = -node.start_time;
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         work.spread = node.spread;
         return 0;
@@ -126,7 +126,7 @@ public partial class AppMain
         AppMain.nnMakeUnitMatrix(amEffectMtx);
         AppMain.amMatrixPush(amEffectMtx);
         AppMain.NNS_QUATERNION rotate = runtimeWorkDirectional.rotate;
-        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, (AppMain.NNS_VECTOR4D)null);
+        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, null);
         runtimeWorkDirectional.rotate = rotate;
         AppMain.AMS_AME_LIST next = amsAmeRuntime1.child_head.next;
         AppMain.AMS_AME_LIST childTail = amsAmeRuntime1.child_tail;

@@ -267,12 +267,12 @@ public partial class AppMain
             AppMain.nnRotateYMatrix(nnsMatrix1, nnsMatrix1, ay);
             AppMain.nnMakeTranslateMatrix(nnsMatrix2, AppMain._cap_len, 0.0f, 0.0f);
             AppMain.nnMultiplyMatrix(nnsMatrix3, nnsMatrix1, nnsMatrix2);
-            AppMain.NNS_VECTOR dst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR dst = new AppMain.NNS_VECTOR();
             AppMain.nnCopyMatrixTranslationVector(dst, nnsMatrix3);
             obj_work.pos.x += AppMain.FX_F32_TO_FX32(dst.x);
             obj_work.pos.y += AppMain.FX_F32_TO_FX32(dst.y);
             obj_work.pos.z += AppMain.FX_F32_TO_FX32(dst.z);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst);
         }
         if (AppMain._cap_kill_flag != 0)
         {

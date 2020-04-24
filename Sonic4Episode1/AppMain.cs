@@ -18428,11 +18428,11 @@ public partial class AppMain
     private static ushort[] gm_gmk_bubble_table_def;
     private static AppMain.OBS_ACTION3D_NN_WORK[] gm_ene_uniuni_obj_3d_list;
     private static AppMain.OBS_ACTION3D_NN_WORK[] gm_ene_mogu_obj_3d_list;
-    private static readonly AppMain.NNS_VECTOR gm_camera_vibration;
+    private static AppMain.NNS_VECTOR gm_camera_vibration;
     private static readonly AppMain.GMS_CAMERA_WORK gm_camera_work;
-    private static readonly AppMain.NNS_VECTOR gm_camera_option_allow_pos;
-    private static readonly AppMain.NNS_VECTOR gm_camera_common_allow_pos;
-    private static readonly AppMain.NNS_VECTOR gm_camera_splstg_allow_pos;
+    private static AppMain.NNS_VECTOR gm_camera_option_allow_pos;
+    private static AppMain.NNS_VECTOR gm_camera_common_allow_pos;
+    private static AppMain.NNS_VECTOR gm_camera_splstg_allow_pos;
     private static short GMD_BOSS5_RKT_SEARCH_INITIAL_DIR_Z_L;
     private static short GMD_BOSS5_RKT_SEARCH_INITIAL_DIR_Z_R;
     private static int GMD_BOSS5_RKT_SEARCH_INITIAL_ADJ_DIR_X_LA;

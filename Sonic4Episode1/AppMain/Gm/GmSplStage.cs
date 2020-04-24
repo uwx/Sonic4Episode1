@@ -40,7 +40,7 @@ public partial class AppMain
     private static void GmSplStageSetLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = -0.4f;
         nnsVector.y = -0.4f;
         nnsVector.z = -1f;
@@ -173,7 +173,7 @@ public partial class AppMain
     private static void gmSplStageLightCtrl(AppMain.GMS_SPL_STG_WORK tcb_work)
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        new AppMain.NNS_VECTOR();
         AppMain.UNREFERENCED_PARAMETER((object)tcb_work);
         AppMain.NNS_VECTOR nnsVector1 = AppMain.gmSplStageLightRot(-1f, -1f, -1f);
         AppMain.nnNormalizeVector(nnsVector1, nnsVector1);
@@ -188,7 +188,7 @@ public partial class AppMain
       float pos_y,
       float pos_z)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         float num1 = pos_x * AppMain.nnSin((int)-AppMain.g_gm_main_system.pseudofall_dir);
         float num2 = pos_x * AppMain.nnCos((int)-AppMain.g_gm_main_system.pseudofall_dir);
         float num3 = pos_y * AppMain.nnSin((int)-AppMain.g_gm_main_system.pseudofall_dir);

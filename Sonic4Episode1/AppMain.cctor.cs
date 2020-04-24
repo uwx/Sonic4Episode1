@@ -26247,9 +26247,9 @@ public partial class AppMain
         AppMain.gm_gmk_bubble_table_def = array21;
         AppMain.gm_ene_uniuni_obj_3d_list = null;
         AppMain.gm_ene_mogu_obj_3d_list = null;
-        AppMain.gm_camera_vibration = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.gm_camera_vibration = new AppMain.NNS_VECTOR();
         AppMain.gm_camera_work = new AppMain.GMS_CAMERA_WORK();
-        AppMain.gm_camera_option_allow_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.gm_camera_option_allow_pos = new AppMain.NNS_VECTOR();
         AppMain.gm_camera_common_allow_pos = new AppMain.NNS_VECTOR(15f, 50f, 0f);
         AppMain.gm_camera_splstg_allow_pos = new AppMain.NNS_VECTOR(0f, 0f, 0f);
         AppMain.GMD_BOSS5_RKT_SEARCH_INITIAL_DIR_Z_L = AppMain.AKM_DEGtoA16(180);

@@ -3397,14 +3397,14 @@ public partial class AppMain
         AppMain.nnMakeUnitQuaternion(ref sct_part_ndc.spin_quat);
         for (int index = 0; index < 2; ++index)
         {
-            AppMain.NNS_VECTOR dst_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR dst_vec = new AppMain.NNS_VECTOR();
             float rand_z = AppMain.MTM_MATH_CLIP((float)((double)AppMain.FX_FX32_TO_F32(AppMain.AkMathRandFx()) * 2.0 - 1.0), -1f, 1f);
             short rand_angle = AppMain.AKM_DEGtoA16(360f * AppMain.FX_FX32_TO_F32(AppMain.AkMathRandFx()));
             AppMain.AkMathGetRandomUnitVector(dst_vec, rand_z, rand_angle);
             AppMain.NNS_QUATERNION dst;
             AppMain.nnMakeRotateAxisQuaternion(out dst, dst_vec.x, dst_vec.y, dst_vec.z, AppMain.GMD_BOSS5_SCT_SPIN_SPD_ANGLE);
             AppMain.nnMultiplyQuaternion(ref sct_part_ndc.spin_quat, ref dst, ref sct_part_ndc.spin_quat);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst_vec);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst_vec);
         }
     }
 

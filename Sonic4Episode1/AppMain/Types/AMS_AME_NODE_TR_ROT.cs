@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class AMS_AME_NODE_TR_ROT : AppMain.AMS_AME_NODE
     {
-        public readonly AppMain.NNS_VECTOR4D translate = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public readonly AppMain.NNS_VECTOR4D translate = new AppMain.NNS_VECTOR4D();
         public AppMain.NNS_QUATERNION rotate;
     }
 }

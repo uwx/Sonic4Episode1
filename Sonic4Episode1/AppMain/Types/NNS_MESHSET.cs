@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class NNS_MESHSET
     {
-        public readonly AppMain.NNS_VECTOR Center = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Center = new AppMain.NNS_VECTOR();
         public float Radius;
         public int iNode;
         public int iMatrix;
@@ -81,10 +81,10 @@ public partial class AppMain
             return new AppMain.NNS_MESHSET()
             {
                 Center = {
-          x = reader.ReadSingle(),
-          y = reader.ReadSingle(),
-          z = reader.ReadSingle()
-        },
+                    x = reader.ReadSingle(),
+                    y = reader.ReadSingle(),
+                    z = reader.ReadSingle()
+                },
                 Radius = reader.ReadSingle(),
                 iNode = reader.ReadInt32(),
                 iMatrix = reader.ReadInt32(),

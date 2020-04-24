@@ -27,17 +27,51 @@ using setting;
 
 public partial class AppMain
 {
-    public class NNS_VECTOR4D : AppMain.NNS_VECTOR
+    public struct NNS_VECTOR4D : IClearable
     {
+        public float x;
+        public float y;
+        public float z;
         public float w;
 
-        public new void Clear()
+        public NNS_VECTOR4D(float _x, float _y, float _z)
         {
-            base.Clear();
-            this.w = 0.0f;
+            this.x = _x;
+            this.y = _y;
+            this.z = _z;
+            this.w = 0;
         }
 
-        public void Assign(AppMain.NNS_VECTOR4D v)
+        public NNS_VECTOR4D Assign(NNS_VECTOR vec)
+        {
+            this.x = vec.x;
+            this.y = vec.y;
+            this.z = vec.z;
+            return this;
+        }
+
+        public NNS_VECTOR4D Assign(ref SNNS_VECTOR vec)
+        {
+            this.x = vec.x;
+            this.y = vec.y;
+            this.z = vec.z;
+            return this;
+        }
+
+        public void Clear()
+        {
+            this.x = this.y = this.z = this.w = 0.0f;
+        }
+
+        internal NNS_VECTOR4D Assign(VecFx32 vec)
+        {
+            this.x = (float)vec.x;
+            this.y = (float)vec.y;
+            this.z = (float)vec.z;
+            return this;
+        }
+
+        public void Assign(NNS_VECTOR4D v)
         {
             this.x = v.x;
             this.y = v.y;
@@ -45,14 +79,19 @@ public partial class AppMain
             this.w = v.w;
         }
 
-        public static explicit operator OpenGL.glArray4f(AppMain.NNS_VECTOR4D v)
+        public static explicit operator OpenGL.glArray4f(NNS_VECTOR4D v)
         {
             return new OpenGL.glArray4f(v.x, v.y, v.z, v.w);
         }
 
-        public static explicit operator float[] (AppMain.NNS_VECTOR4D v)
+        public static explicit operator float[] (NNS_VECTOR4D v)
         {
             return new float[4] { v.x, v.y, v.z, v.w };
+        }
+
+        public static explicit operator NNS_VECTOR(NNS_VECTOR4D v)
+        {
+            return new NNS_VECTOR(v.x, v.y, v.z);
         }
     }
 }

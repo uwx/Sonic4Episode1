@@ -244,7 +244,7 @@ public partial class AppMain
         AppMain.nnMakeUnitMatrix(nnsMatrix1);
         AppMain.nnMakeUnitMatrix(nnsMatrix2);
         AppMain.nnMakeRotateZMatrix(nnsMatrix2, AppMain.AKM_DEGtoA32(72));
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         for (int index = 0; index < 5; ++index)
         {
             AppMain.OBS_OBJECT_WORK parent_obj = AppMain.GmEventMgrLocalEventBirth((ushort)308, obj_work.pos.x, obj_work.pos.y, (ushort)0, (sbyte)0, (sbyte)0, (byte)0, (byte)0, (byte)0);
@@ -262,7 +262,7 @@ public partial class AppMain
             ((AppMain.GMS_ENEMY_3D_WORK)parent_obj).ene_com.enemy_flag |= 32768U;
             AppMain.GmEfctEneEsCreate(parent_obj, 10).efct_com.obj_work.dir.z = (ushort)AppMain.AKM_DEGtoA16(-72 * index);
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         obj_work.disp_flag |= 32U;
         obj_work.disp_flag |= 4U;
         obj_work.ppFunc = new AppMain.MPP_VOID_OBS_OBJECT_WORK(AppMain.gmEneTStarAttackMain);

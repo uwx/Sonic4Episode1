@@ -36,7 +36,7 @@ public partial class AppMain
         public AppMain.VecFx32 boost_pos1 = new AppMain.VecFx32();
         public AppMain.VecFx32 boost_pos2 = new AppMain.VecFx32();
         public readonly AppMain.NNS_MATRIX truck_mtx_ply_mtn_pos = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
-        public readonly AppMain.NNS_VECTOR calc_accel = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR calc_accel = new AppMain.NNS_VECTOR();
         public readonly ushort[] key_map = new ushort[8];
         public readonly int[] key_repeat_timer = new int[8];
         public readonly AppMain.GMS_PLAYER_PACKET[] player_packet = AppMain.New<AppMain.GMS_PLAYER_PACKET>(4);

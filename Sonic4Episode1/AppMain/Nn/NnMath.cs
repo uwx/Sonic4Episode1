@@ -813,9 +813,9 @@ public partial class AppMain
       AppMain.NNS_MATRIX mtx,
       AppMain.NNS_CAMERA_TARGET_UPVECTOR cam)
     {
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
         nnsVector1.x = cam.Position.x - cam.Target.x;
         nnsVector1.y = cam.Position.y - cam.Target.y;
         nnsVector1.z = cam.Position.z - cam.Target.z;
@@ -2179,7 +2179,7 @@ public partial class AppMain
       float vz,
       int ang)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = vx;
         nnsVector.y = vy;
         nnsVector.z = vz;
@@ -2192,7 +2192,7 @@ public partial class AppMain
         dst.y = nnsVector.y * s;
         dst.z = nnsVector.z * s;
         dst.w = c;
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public static void nnMakeRotateMatrixQuaternion(
@@ -5490,10 +5490,10 @@ public partial class AppMain
       int SubMotIdx,
       float frame)
     {
-        AppMain.NNS_VECTOR tv = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR tv = new AppMain.NNS_VECTOR();
         AppMain.NNS_ROTATE_A32 rv = new AppMain.NNS_ROTATE_A32();
         AppMain.NNS_QUATERNION quat = new AppMain.NNS_QUATERNION();
-        AppMain.NNS_VECTOR sv = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR sv = new AppMain.NNS_VECTOR();
         uint fType1 = pNode.fType;
         uint rtype = pNode.fType & 3840U;
         tv.Assign(pNode.Translation);
@@ -5587,8 +5587,8 @@ public partial class AppMain
             AppMain.nnQuaternionMatrix(pNodeMtx, pNodeMtx, ref quat);
         if (num3 == 1)
             AppMain.nnScaleMatrixFast(pNodeMtx, sv.x, sv.y, sv.z);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(tv);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(sv);
         return SubMotIdx;
     }
 
@@ -6257,7 +6257,7 @@ public partial class AppMain
             }
             else
             {
-                AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+                AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
                 AppMain.nnTransformVector(nnsVector, AppMain.nncalcnodematrix.nnsBaseMtx, pNode.Translation);
                 AppMain.nnCopyVectorMatrixTranslation(mtx, nnsVector);
             }
@@ -6682,10 +6682,10 @@ public partial class AppMain
                 }
                 else
                 {
-                    AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+                    AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
                     AppMain.nnTransformVector(nnsVector, AppMain.nncalcmatrixpalette.nnsBaseMtx, nnsNode.Translation);
                     AppMain.nnCopyVectorMatrixTranslation(currentMatrix, nnsVector);
-                    AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+                    //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
                 }
             }
             if (((int)nnsNode.fType & 4096) != 0)

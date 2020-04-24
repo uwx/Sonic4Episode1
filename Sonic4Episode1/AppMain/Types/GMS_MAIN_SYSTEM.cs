@@ -33,8 +33,8 @@ public partial class AppMain
         public uint[] player_rest_num = new uint[1];
         public readonly AppMain.OBS_DIFF_COLLISION map_fcol = new AppMain.OBS_DIFF_COLLISION();
         public int[] map_size = new int[2];
-        public readonly AppMain.NNS_VECTOR def_light_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR ply_light_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR def_light_vec = new AppMain.NNS_VECTOR();
+        public readonly AppMain.NNS_VECTOR ply_light_vec = new AppMain.NNS_VECTOR();
         public uint game_flag;
         public AppMain.MTS_TASK_TCB pre_tcb;
         public AppMain.MTS_TASK_TCB post_tcb;

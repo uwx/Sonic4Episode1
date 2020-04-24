@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class AMS_AME_NODE_VORTEX : AppMain.AMS_AME_NODE
     {
-        public readonly AppMain.NNS_VECTOR4D position = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        public readonly AppMain.NNS_VECTOR4D axis = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public readonly AppMain.NNS_VECTOR4D position = new AppMain.NNS_VECTOR4D();
+        public readonly AppMain.NNS_VECTOR4D axis = new AppMain.NNS_VECTOR4D();
     }
 }

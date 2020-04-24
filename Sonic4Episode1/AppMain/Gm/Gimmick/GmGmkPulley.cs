@@ -172,7 +172,7 @@ public partial class AppMain
         int offset = prim.vtxPCT3D.offset;
         prim.format3D = 4;
         AppMain.NNS_MATRIX nnsMatrix1 = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
-        AppMain.NNS_VECTOR dst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR dst = new AppMain.NNS_VECTOR();
         for (int index1 = 0; (long)index1 < (long)gmkPulleyManager.num; ++index1)
         {
             int index2 = offset + index1 * 6;
@@ -209,7 +209,7 @@ public partial class AppMain
             if ((long)index1 != (long)(gmkPulleyManager.num - 1U))
                 buffer[index4] = buffer[index2 + 3];
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(dst);
         AppMain.GlobalPool<AppMain.NNS_MATRIX>.Release(nnsMatrix1);
         AppMain.NNS_MATRIX nnsMatrix2 = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
         AppMain.nnMakeUnitMatrix(nnsMatrix2);

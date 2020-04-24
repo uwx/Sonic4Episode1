@@ -154,9 +154,9 @@ public partial class AppMain
 
     public static void AkMathNormalizeMtx(AppMain.NNS_MATRIX dst_mtx, AppMain.NNS_MATRIX src_mtx)
     {
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
         AppMain.amVectorSet(nnsVector1, src_mtx.M00, src_mtx.M01, src_mtx.M02);
         AppMain.amVectorSet(nnsVector2, src_mtx.M10, src_mtx.M11, src_mtx.M12);
         AppMain.amVectorSet(nnsVector3, src_mtx.M20, src_mtx.M21, src_mtx.M22);
@@ -173,14 +173,14 @@ public partial class AppMain
         dst_mtx.M20 = nnsVector3.x * num3;
         dst_mtx.M21 = nnsVector3.y * num3;
         dst_mtx.M22 = nnsVector3.z * num3;
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
     }
 
     private static void AkMathExtractScaleMtx(AppMain.NNS_MATRIX dst_mtx, AppMain.NNS_MATRIX src_mtx)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         AppMain.amAssert(true);
         AppMain.amVectorSet(nnsVector, src_mtx.M(0, 0), src_mtx.M(0, 1), src_mtx.M(0, 2));
         float x = AppMain.nnLengthVector(nnsVector);
@@ -189,7 +189,7 @@ public partial class AppMain
         AppMain.amVectorSet(nnsVector, src_mtx.M(2, 0), src_mtx.M(2, 1), src_mtx.M(2, 2));
         float z = AppMain.nnLengthVector(nnsVector);
         AppMain.nnMakeScaleMatrix(dst_mtx, x, y, z);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public static void AkMathInvertYZQuaternion(

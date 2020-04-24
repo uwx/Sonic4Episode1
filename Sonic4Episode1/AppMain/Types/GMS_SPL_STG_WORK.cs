@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class GMS_SPL_STG_WORK
     {
-        public readonly AppMain.NNS_VECTOR light_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR light_vec = new AppMain.NNS_VECTOR();
         public uint counter;
         public uint flag;
         public int roll;

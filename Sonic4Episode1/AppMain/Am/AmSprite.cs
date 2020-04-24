@@ -17,10 +17,10 @@ public partial class AppMain
         AppMain.AMS_AME_NODE_CIRCLE node = (AppMain.AMS_AME_NODE_CIRCLE)amsAmeCreateParam.node;
         AppMain.AMS_AME_RUNTIME_WORK_CIRCLE work = (AppMain.AMS_AME_RUNTIME_WORK_CIRCLE)amsAmeCreateParam.work;
         work.time = -node.start_time;
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         float sizeRate = amsAmeCreateParam.ecb.size_rate;
         work.spread = node.spread;
@@ -40,10 +40,10 @@ public partial class AppMain
             return 0;
         if ((double)node.life != -1.0 && (double)work.time >= (double)node.life)
             return 1;
-        AppMain.NNS_VECTOR4D nnsVectoR4D1 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D1 = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorScale(nnsVectoR4D1, work.velocity, AppMain._am_unit_time);
         AppMain.amVectorAdd(work.position, nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
         float sizeRate = amsAmeRuntime1.ecb.size_rate;
         work.spread += node.spread_variation * AppMain._am_unit_time;
         if ((double)node.radius_variation != 0.0)
@@ -56,11 +56,11 @@ public partial class AppMain
         AppMain.nnMakeUnitMatrix(amUpdateCircleMtx);
         AppMain.amMatrixPush(amUpdateCircleMtx);
         AppMain.NNS_QUATERNION rotate = work.rotate;
-        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, (AppMain.NNS_VECTOR4D)null);
+        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, null);
         work.rotate = rotate;
-        AppMain.NNS_VECTOR4D nnsVectoR4D2 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D3 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D4 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D2 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D3 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D4 = new AppMain.NNS_VECTOR4D();
         AppMain.AMS_AME_LIST next = amsAmeRuntime1.child_head.next;
         for (AppMain.AMS_AME_LIST childTail = amsAmeRuntime1.child_tail; next != childTail; next = next.next)
         {
@@ -87,13 +87,13 @@ public partial class AppMain
                     float pCs;
                     AppMain.amSinCos(angle, out pSn, out pCs);
                     AppMain.amVectorSet(nnsVectoR4D2, pSn * radius, 0.0f, pCs * radius);
-                    AppMain.NNS_VECTOR4D nnsVectoR4D5 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+                    AppMain.NNS_VECTOR4D nnsVectoR4D5 = new AppMain.NNS_VECTOR4D();
                     AppMain.NNS_QUATERNION pQuat = new AppMain.NNS_QUATERNION();
                     AppMain.amVectorOuterProduct(nnsVectoR4D5, nnsVectoR4D4, nnsVectoR4D2);
                     double num = (double)AppMain.amVectorUnit(nnsVectoR4D5);
                     AppMain.amQuatRotAxisToQuat(ref pQuat, nnsVectoR4D5, AppMain.NNM_DEGtoRAD((int)work.spread));
-                    AppMain.amQuatMultiVector(nnsVectoR4D4, nnsVectoR4D4, ref pQuat, (AppMain.NNS_VECTOR4D)null);
-                    AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D5);
+                    AppMain.amQuatMultiVector(nnsVectoR4D4, nnsVectoR4D4, ref pQuat, null);
+                    //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D5);
                     AppMain.amMatrixCalcVector(nnsVectoR4D2, nnsVectoR4D2);
                     AppMain.amMatrixCalcVector(nnsVectoR4D4, nnsVectoR4D4);
                     AppMain.amVectorScale(nnsVectoR4D3, nnsVectoR4D4, work.offset + work.offset_chaos * AppMain.nnRandom());
@@ -120,9 +120,9 @@ public partial class AppMain
                 }
             }
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D4);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D4);
         AppMain.amMatrixPop();
         return 0;
     }
@@ -139,10 +139,10 @@ public partial class AppMain
         AppMain.AMS_AME_RUNTIME_WORK_SIMPLE_SPRITE work = (AppMain.AMS_AME_RUNTIME_WORK_SIMPLE_SPRITE)amsAmeCreateParam.work;
         work.time = -node.start_time;
         work.set_color(node.color_start.r, node.color_start.g, node.color_start.b, (byte)((int)node.color_start.a * amsAmeCreateParam.ecb.transparency >> 8));
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         float z = node.size + node.size_chaos * AppMain.nnRandom();
         work.set_size(z * node.scale_x_start, z * node.scale_y_start, z, 0.0f);
         if (((int)node.flag & 32768) != 0)
@@ -395,10 +395,10 @@ public partial class AppMain
         colorStart.color = node.color_start.color;
         colorStart.a = (byte)((int)colorStart.a * amsAmeCreateParam.ecb.transparency >> 8);
         work.set_color(colorStart.color);
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         float z = node.size + node.size_chaos * AppMain.nnRandom();
         work.set_size(z * node.scale_x_start, z * node.scale_x_start, z, 0.0f);
         work.twist = node.twist_angle + node.twist_angle_chaos * AppMain.nnRandom();
@@ -455,7 +455,7 @@ public partial class AppMain
         float num4 = node.scale_y_start * sizeRate;
         float num5 = node.scale_x_end * sizeRate;
         float num6 = node.scale_y_end * sizeRate;
-        AppMain.NNS_VECTOR4D nnsVectoR4D = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D = new AppMain.NNS_VECTOR4D();
         for (; next != activeTail; next = next.next)
         {
             AppMain.AMS_AME_RUNTIME_WORK_SPRITE runtimeWorkSprite = (AppMain.AMS_AME_RUNTIME_WORK_SPRITE)(AppMain.AMS_AME_RUNTIME_WORK)next;
@@ -525,7 +525,7 @@ public partial class AppMain
                 }
             }
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
         return 0;
     }
 

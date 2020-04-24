@@ -29,28 +29,28 @@ public partial class AppMain
 {
     public class OBS_CAMERA : AppMain.IClearable
     {
-        public readonly AppMain.NNS_VECTOR disp_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR prev_disp_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR prev_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR disp_ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR target_ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR play_ofst_max = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR allow = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR allow_limit = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR target_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR camup_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR spd = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR spd_add = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR spd_max = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR disp_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR prev_disp_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR prev_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR ofst = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR disp_ofst = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR target_ofst = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR play_ofst_max = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR allow = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR allow_limit = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR target_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR camup_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR spd = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR spd_add = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR spd_max = new AppMain.NNS_VECTOR();
         public readonly int[] roll_hist = new int[16];
-        public readonly AppMain.NNS_VECTOR work = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR work = new AppMain.NNS_VECTOR();
         public readonly int[] limit = new int[6];
         public readonly AppMain.NNS_MATRIX prj_pers_mtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
         public readonly AppMain.NNS_MATRIX prj_ortho_mtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
         public readonly AppMain.NNS_MATRIX view_mtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
-        public readonly AppMain.NNS_VECTOR up_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR up_vec = new AppMain.NNS_VECTOR();
         public int camera_id;
         public AppMain.OBS_OBJECT_WORK target_obj;
         public AppMain.OBS_OBJECT_WORK camup_obj;

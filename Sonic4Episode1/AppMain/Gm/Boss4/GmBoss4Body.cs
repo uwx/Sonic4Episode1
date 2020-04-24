@@ -1276,7 +1276,7 @@ public partial class AppMain
             AppMain.OBS_OBJECT_WORK obsObjectWork1 = (AppMain.OBS_OBJECT_WORK)body_work;
             AppMain.NNS_MATRIX nodeMatrix1 = AppMain.GmBoss4UtilGetNodeMatrix(((AppMain.GMS_BOSS4_EGG_WORK)body_work.parts_objs[1]).node_work, 9);
             AppMain.NNS_MATRIX nodeMatrix2 = AppMain.GmBoss4UtilGetNodeMatrix(body_work.node_work, 2);
-            AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
             nnsVector.x = (float)((double)nodeMatrix1.M03 - (double)nodeMatrix2.M03 + (double)obsObjectWork1.pos.x / 4096.0);
             nnsVector.y = nodeMatrix1.M13;
             nnsVector.z = nodeMatrix1.M23;
@@ -1301,7 +1301,7 @@ public partial class AppMain
             }
             else
                 body_work.proc_update = new AppMain.MPP_VOID_GMS_BOSS4_BODY_WORK(AppMain.gmBoss4BodyStateUpdate2ndAttack);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 
@@ -1330,7 +1330,7 @@ public partial class AppMain
             AppMain.OBS_OBJECT_WORK obsObjectWork1 = (AppMain.OBS_OBJECT_WORK)body_work;
             AppMain.NNS_MATRIX nodeMatrix1 = AppMain.GmBoss4UtilGetNodeMatrix(((AppMain.GMS_BOSS4_EGG_WORK)body_work.parts_objs[1]).node_work, 6);
             AppMain.NNS_MATRIX nodeMatrix2 = AppMain.GmBoss4UtilGetNodeMatrix(body_work.node_work, 2);
-            AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
             nnsVector.x = (float)((double)nodeMatrix1.M03 - (double)nodeMatrix2.M03 + (double)obsObjectWork1.pos.x / 4096.0);
             nnsVector.y = nodeMatrix1.M13;
             nnsVector.z = nodeMatrix1.M23;
@@ -1348,7 +1348,7 @@ public partial class AppMain
                 obsObjectWork2.spd.y = AppMain.FX_F32_TO_FX32(AppMain.GMD_BOSS4_BODY_CREATE_CAP_THROW_SPD_Y_2);
             }
             body_work.proc_update = new AppMain.MPP_VOID_GMS_BOSS4_BODY_WORK(AppMain.gmBoss4BodyStateUpdate2ndAttack);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 

@@ -162,7 +162,7 @@ public partial class AppMain
         AppMain.nnMakeUnitQuaternion(ref ldpart_work.rot_diff_quat);
         for (int index = 0; (long)index < (long)AppMain.GMD_BOSS5_LAND_LDPART_SPIN_ROT_AXIS_NUM; ++index)
         {
-            AppMain.NNS_VECTOR dst_vec = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR dst_vec = new AppMain.NNS_VECTOR();
             float rand_z = AppMain.MTM_MATH_CLIP((float)((double)AppMain.FX_FX32_TO_F32(AppMain.AkMathRandFx()) * 2.0 - 1.0), -1f, 1f);
             short rand_angle = AppMain.AKM_DEGtoA16(360f * AppMain.FX_FX32_TO_F32(AppMain.AkMathRandFx()));
             AppMain.AkMathGetRandomUnitVector(dst_vec, rand_z, rand_angle);
@@ -268,13 +268,13 @@ public partial class AppMain
     private static void GmBoss5LandSetLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = 0.0f;
         nnsVector.y = -0.2f;
         nnsVector.z = -1f;
         AppMain.nnNormalizeVector(nnsVector, nnsVector);
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_1, ref col, 1f, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
 

@@ -161,7 +161,7 @@ public partial class AppMain
     private static void GmGmkBreakLandSetLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA();
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = -0.5f;
         nnsVector.y = -0.05f;
         nnsVector.z = -1f;
@@ -178,7 +178,7 @@ public partial class AppMain
         col.b = 0.65f;
         AppMain.nnNormalizeVector(nnsVector, nnsVector);
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_2, ref col, 1f, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
 

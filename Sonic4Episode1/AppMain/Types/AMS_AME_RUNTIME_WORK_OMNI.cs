@@ -84,18 +84,14 @@ public partial class AppMain
             }
         }
 
-        public AppMain.NNS_VECTOR4D position
+        public ref AppMain.NNS_VECTOR4D position
         {
             get
             {
-                return this.rtm_work_.position;
-            }
-            set
-            {
-                this.rtm_work_.position.Assign(value);
+                return ref this.rtm_work_.position;
             }
         }
-
+        
         public AppMain.NNS_VECTOR4D velocity
         {
             get

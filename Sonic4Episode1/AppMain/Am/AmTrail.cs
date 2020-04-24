@@ -249,9 +249,9 @@ public partial class AppMain
             return;
         AppMain.NNS_RGBA startColor = work.startColor;
         AppMain.NNS_RGBA ptclColor = work.ptclColor;
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
         float num1 = 1f;
         AppMain.AMS_PARAM_DRAW_PRIMITIVE setParam = AppMain.GlobalPool<AppMain.AMS_PARAM_DRAW_PRIMITIVE>.Alloc();
         int num2 = 1;
@@ -386,9 +386,9 @@ public partial class AppMain
             setParam.sortZ = num5;
             AppMain.amDrawPrimitive3D(pEffect.drawState, setParam);
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
     }
 
     private static void _amTrailDrawPartsNormal(
@@ -407,9 +407,9 @@ public partial class AppMain
         nnsRgba.g = (float)((double)work.startColor.g * (double)num3 + (double)work.endColor.g * (1.0 - (double)num3));
         nnsRgba.b = (float)((double)work.startColor.b * (double)num3 + (double)work.endColor.b * (1.0 - (double)num3));
         nnsRgba.a = (float)((double)work.startColor.a * (double)num3 + (double)work.endColor.a * (1.0 - (double)num3));
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
         double num4 = (double)AppMain.nnDistanceVector(pNow.pos, AppMain._am_ef_camPos);
         AppMain.amVectorSet(nnsVector3, 0.0f, 0.0f, 1f);
         AppMain.nnCrossProductVector(nnsVector1, nnsVector3, pNow.dir);
@@ -423,9 +423,9 @@ public partial class AppMain
         _pv[pv + 5].Col = AppMain.AMD_FCOLTORGBA8888(nnsRgba.r, nnsRgba.g, nnsRgba.b, nnsRgba.a);
         _pv[pv + 1].Col = _pv[pv + 5].Col;
         _pv[pv + 3] = _pv[pv + 1];
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
     }
 
     private static void _amTrailDrawPartsNormalTex(
@@ -443,9 +443,9 @@ public partial class AppMain
         nnsRgba.g = (float)((double)work.startColor.g * (double)num2 + (double)work.endColor.g * (1.0 - (double)num2));
         nnsRgba.b = (float)((double)work.startColor.b * (double)num2 + (double)work.endColor.b * (1.0 - (double)num2));
         nnsRgba.a = (float)((double)work.startColor.a * (double)num2 + (double)work.endColor.a * (1.0 - (double)num2));
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        AppMain.NNS_VECTOR nnsVector3 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
+        AppMain.NNS_VECTOR nnsVector3 = new AppMain.NNS_VECTOR();
         double num3 = (double)AppMain.nnDistanceVector(pNow.pos, AppMain._am_ef_camPos);
         AppMain.amVectorSet(nnsVector3, 0.0f, 0.0f, 1f);
         AppMain.nnCrossProductVector(nnsVector1, nnsVector3, pNow.dir);
@@ -463,9 +463,9 @@ public partial class AppMain
         _pv[pv + 5].Tex.u = num2;
         _pv[pv + 5].Tex.v = 1f;
         _pv[pv + 3] = _pv[pv + 1];
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector3);
     }
 
     private static void _amTrailAddParts(AppMain.AMS_TRAIL_PARTS pNew, AppMain.AMS_TRAIL_PARAM work)

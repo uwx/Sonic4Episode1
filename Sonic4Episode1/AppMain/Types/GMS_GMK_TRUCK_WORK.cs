@@ -33,7 +33,7 @@ public partial class AppMain
         public readonly AppMain.NNS_MATRIX tire_pos_f = new AppMain.NNS_MATRIX();
         public readonly AppMain.NNS_MATRIX tire_pos_b = new AppMain.NNS_MATRIX();
         public readonly AppMain.NNS_MATRIX light_pos = new AppMain.NNS_MATRIX();
-        public readonly AppMain.NNS_VECTOR trans_r = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR trans_r = new AppMain.NNS_VECTOR();
         public readonly AppMain.GMS_ENEMY_3D_WORK gmk_work;
         public AppMain.GMS_GMK_TRUCK_WORK seq;
         public AppMain.GMS_PLAYER_WORK target_player;

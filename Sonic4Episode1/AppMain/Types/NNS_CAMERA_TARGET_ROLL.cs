@@ -29,8 +29,8 @@ public partial class AppMain
 {
     public class NNS_CAMERA_TARGET_ROLL : AppMain.IClearable
     {
-        public readonly AppMain.NNS_VECTOR Position = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR Target = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Position = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Target = new AppMain.NNS_VECTOR();
         public uint User;
         public int Fovy;
         public float Aspect;

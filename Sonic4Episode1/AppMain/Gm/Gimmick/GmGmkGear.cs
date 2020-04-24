@@ -297,14 +297,14 @@ public partial class AppMain
     public static void GmGmkGearSetLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = -0.35f;
         nnsVector.y = 2.25f;
         nnsVector.z = -0.9f;
         AppMain.nnNormalizeVector(nnsVector, nnsVector);
         float intensity = AppMain.g_gs_main_sys_info.stage_id != (ushort)14 ? 1f : 0.9f;
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_1, ref col, intensity, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public static void GmGmkGearBuild()

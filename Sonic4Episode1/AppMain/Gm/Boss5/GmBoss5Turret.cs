@@ -50,13 +50,13 @@ public partial class AppMain
       ref AppMain.VecFx32 src_ofst_pos,
       out AppMain.VecFx32 dest_ofst_pos)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         AppMain.NNS_MATRIX nnsMatrix = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
         AppMain.amVectorSet(nnsVector, AppMain.FX_FX32_TO_F32(src_ofst_pos.x), AppMain.FX_FX32_TO_F32(-src_ofst_pos.y), AppMain.FX_FX32_TO_F32(src_ofst_pos.z));
         AppMain.nnMakeQuaternionMatrix(nnsMatrix, ref trt_work.disp_quat);
         AppMain.nnTransformVector(nnsVector, nnsMatrix, nnsVector);
         dest_ofst_pos = new AppMain.VecFx32(AppMain.FX_F32_TO_FX32(nnsVector.x), AppMain.FX_F32_TO_FX32(-nnsVector.y), AppMain.FX_F32_TO_FX32(nnsVector.z));
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         AppMain.GlobalPool<AppMain.NNS_MATRIX>.Release(nnsMatrix);
     }
 

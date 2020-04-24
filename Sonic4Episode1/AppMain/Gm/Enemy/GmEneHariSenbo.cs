@@ -178,7 +178,7 @@ public partial class AppMain
     private static void gmEneHariJetEfctMain(AppMain.OBS_OBJECT_WORK obj_work)
     {
         AppMain.NNS_MATRIX userWorkObject = (AppMain.NNS_MATRIX)obj_work.user_work_OBJECT;
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         if (obj_work.parent_obj == null)
         {
             obj_work.flag |= 4U;
@@ -196,7 +196,7 @@ public partial class AppMain
             nnsVector.y += 5f;
             AppMain.GmComEfctSetDispOffsetF((AppMain.GMS_EFFECT_3DES_WORK)obj_work, nnsVector.x, nnsVector.y, nnsVector.z);
             AppMain.GmEffectDefaultMainFuncDeleteAtEnd(obj_work);
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 

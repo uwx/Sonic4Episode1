@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class AMS_AME_NODE_PLANE : AppMain.AMS_AME_NODE_TR_ROT
     {
-        public readonly AppMain.NNS_VECTOR4D rotate_axis = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        public readonly AppMain.NNS_VECTOR4D rotate_axis = new AppMain.NNS_VECTOR4D();
         public float z_bias;
         public float inheritance_rate;
         public float life;

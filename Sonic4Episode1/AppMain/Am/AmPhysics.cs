@@ -18,17 +18,17 @@ public partial class AppMain
     {
         AppMain.AMS_AME_NODE_GRAVITY amsAmeNodeGravity = (AppMain.AMS_AME_NODE_GRAVITY)node;
         float amUnitTime = AppMain._am_unit_time;
-        AppMain.NNS_VECTOR4D nnsVectoR4D1 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D2 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D1 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D2 = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorCopy(nnsVectoR4D2, amsAmeNodeGravity.direction);
         if (((int)amsAmeNodeGravity.flag & 2) != 0)
-            AppMain.amQuatMultiVector(nnsVectoR4D2, nnsVectoR4D2, ref ecb.rotate, (AppMain.NNS_VECTOR4D)null);
+            AppMain.amQuatMultiVector(nnsVectoR4D2, nnsVectoR4D2, ref ecb.rotate, null);
         AppMain.amVectorScale(nnsVectoR4D1, nnsVectoR4D2, (float)((double)amsAmeNodeGravity.magnitude * (double)amUnitTime * (double)amUnitTime * 0.5));
         AppMain.amVectorAdd(work.position, nnsVectoR4D1);
         AppMain.amVectorScale(nnsVectoR4D1, nnsVectoR4D2, amsAmeNodeGravity.magnitude * amUnitTime);
         AppMain.amVectorAdd(work.velocity, nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
     }
 
     public static void _amApplyUniform(
@@ -38,12 +38,12 @@ public partial class AppMain
     {
         AppMain.AMS_AME_NODE_UNIFORM amsAmeNodeUniform = (AppMain.AMS_AME_NODE_UNIFORM)node;
         float amUnitTime = AppMain._am_unit_time;
-        AppMain.NNS_VECTOR4D nnsVectoR4D = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorScale(nnsVectoR4D, amsAmeNodeUniform.direction, amsAmeNodeUniform.magnitude * amUnitTime);
         if (((int)amsAmeNodeUniform.flag & 2) != 0)
-            AppMain.amQuatMultiVector(nnsVectoR4D, nnsVectoR4D, ref ecb.rotate, (AppMain.NNS_VECTOR4D)null);
+            AppMain.amQuatMultiVector(nnsVectoR4D, nnsVectoR4D, ref ecb.rotate, null);
         AppMain.amVectorAdd(work.position, nnsVectoR4D);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
     }
 
     public static void _amApplyRadial(
@@ -53,8 +53,8 @@ public partial class AppMain
     {
         AppMain.AMS_AME_NODE_RADIAL amsAmeNodeRadial = (AppMain.AMS_AME_NODE_RADIAL)node;
         float amUnitTime = AppMain._am_unit_time;
-        AppMain.NNS_VECTOR4D nnsVectoR4D1 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D2 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D1 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D2 = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorCopy(nnsVectoR4D2, amsAmeNodeRadial.position);
         if (((int)amsAmeNodeRadial.flag & 1) != 0)
             AppMain.amVectorAdd(nnsVectoR4D2, ecb.translate);
@@ -62,8 +62,8 @@ public partial class AppMain
         float num1 = 1f / (float)Math.Pow((double)AppMain.amVectorScalor(nnsVectoR4D1), (double)amsAmeNodeRadial.attenuation);
         double num2 = (double)AppMain.amVectorScaleUnit(nnsVectoR4D1, nnsVectoR4D1, amsAmeNodeRadial.magnitude * num1 * amUnitTime);
         AppMain.amVectorAdd(work.position, nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
     }
 
     public static void _amApplyVortex(
@@ -72,16 +72,16 @@ public partial class AppMain
       AppMain.AMS_AME_RUNTIME_WORK work)
     {
         AppMain.AMS_AME_NODE_VORTEX amsAmeNodeVortex = (AppMain.AMS_AME_NODE_VORTEX)node;
-        AppMain.NNS_VECTOR4D nnsVectoR4D1 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D2 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D3 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D4 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D1 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D2 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D3 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D4 = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorCopy(nnsVectoR4D1, amsAmeNodeVortex.position);
         AppMain.amVectorCopy(nnsVectoR4D3, amsAmeNodeVortex.axis);
         if (((int)amsAmeNodeVortex.flag & 1) != 0)
             AppMain.amVectorAdd(nnsVectoR4D1, ecb.translate);
         if (((int)amsAmeNodeVortex.flag & 2) != 0)
-            AppMain.amQuatMultiVector(nnsVectoR4D3, nnsVectoR4D3, ref ecb.rotate, (AppMain.NNS_VECTOR4D)null);
+            AppMain.amQuatMultiVector(nnsVectoR4D3, nnsVectoR4D3, ref ecb.rotate, null);
         AppMain.amVectorSub(nnsVectoR4D2, work.position, nnsVectoR4D1);
         AppMain.amVectorOuterProduct(nnsVectoR4D4, nnsVectoR4D3, nnsVectoR4D2);
         AppMain.amVectorScale(nnsVectoR4D2, nnsVectoR4D4, AppMain._am_unit_time);
@@ -89,10 +89,10 @@ public partial class AppMain
         AppMain.amVectorOuterProduct(nnsVectoR4D4, nnsVectoR4D3, nnsVectoR4D4);
         AppMain.amVectorScale(nnsVectoR4D2, nnsVectoR4D4, AppMain._am_unit_time);
         AppMain.amVectorAdd(work.velocity, nnsVectoR4D2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D4);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D4);
     }
 
     public static void _amApplyDrag(
@@ -102,9 +102,9 @@ public partial class AppMain
     {
         AppMain.AMS_AME_NODE_DRAG amsAmeNodeDrag = (AppMain.AMS_AME_NODE_DRAG)node;
         float amUnitTime = AppMain._am_unit_time;
-        AppMain.NNS_VECTOR4D nnsVectoR4D1 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D2 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
-        AppMain.NNS_VECTOR4D nnsVectoR4D3 = AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Alloc();
+        AppMain.NNS_VECTOR4D nnsVectoR4D1 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D2 = new AppMain.NNS_VECTOR4D();
+        AppMain.NNS_VECTOR4D nnsVectoR4D3 = new AppMain.NNS_VECTOR4D();
         AppMain.amVectorCopy(nnsVectoR4D3, amsAmeNodeDrag.position);
         if (((int)amsAmeNodeDrag.flag & 1) != 0)
             AppMain.amVectorAdd(nnsVectoR4D3, ecb.translate);
@@ -114,9 +114,9 @@ public partial class AppMain
         AppMain.amVectorAdd(work.position, nnsVectoR4D1);
         AppMain.amVectorScale(nnsVectoR4D1, nnsVectoR4D2, amsAmeNodeDrag.magnitude * amUnitTime);
         AppMain.amVectorAdd(work.velocity, nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D1);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D2);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D3);
     }
 
     public static void _amApplyNoise(

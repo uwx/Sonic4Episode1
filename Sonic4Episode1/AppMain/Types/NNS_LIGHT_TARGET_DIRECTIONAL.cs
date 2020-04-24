@@ -29,8 +29,8 @@ public partial class AppMain
 {
     public class NNS_LIGHT_TARGET_DIRECTIONAL
     {
-        public readonly AppMain.NNS_VECTOR Position = new AppMain.NNS_VECTOR();
-        public readonly AppMain.NNS_VECTOR Target = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Position = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Target = new AppMain.NNS_VECTOR();
         public uint User;
         public AppMain.NNS_RGBA Color;
         public float Intensity;

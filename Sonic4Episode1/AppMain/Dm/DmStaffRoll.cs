@@ -1342,7 +1342,7 @@ public partial class AppMain
     private static void dmStaffRollInitLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         AppMain.g_obj.ambient_color.r = 0.8f;
         AppMain.g_obj.ambient_color.g = 0.8f;
         AppMain.g_obj.ambient_color.b = 0.8f;
@@ -1354,7 +1354,7 @@ public partial class AppMain
         AppMain.g_gm_main_system.def_light_vec.Assign(nnsVector);
         AppMain.g_gm_main_system.def_light_col = col;
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_6, ref col, 1f, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private static void dmStaffRollCameraInit()
@@ -1373,7 +1373,7 @@ public partial class AppMain
 
     private static void dmStaffRollCameraFunc(AppMain.OBS_CAMERA obj_camera)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = AppMain.FXM_FX32_TO_FLOAT(0);
         nnsVector.y = AppMain.FXM_FX32_TO_FLOAT(0);
         nnsVector.z = AppMain.FXM_FX32_TO_FLOAT(409600);
@@ -1393,7 +1393,7 @@ public partial class AppMain
         obj_camera.target_pos.z -= 50f;
         AppMain.ObjObjectCameraSet(AppMain.FXM_FLOAT_TO_FX32(obj_camera.disp_pos.x - (float)((int)AppMain.OBD_LCD_X / 2)), AppMain.FXM_FLOAT_TO_FX32(-obj_camera.disp_pos.y - (float)((int)AppMain.OBD_LCD_Y / 2)), AppMain.FXM_FLOAT_TO_FX32(obj_camera.disp_pos.x - (float)((int)AppMain.OBD_LCD_X / 2)), AppMain.FXM_FLOAT_TO_FX32(-obj_camera.disp_pos.y - (float)((int)AppMain.OBD_LCD_Y / 2)));
         AppMain.GmCameraSetClipCamera(obj_camera);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public void DmMovieInit(object arg)

@@ -17,10 +17,10 @@ public partial class AppMain
         AppMain.AMS_AME_NODE_SURFACE node = (AppMain.AMS_AME_NODE_SURFACE)amsAmeCreateParam.node;
         AppMain.AMS_AME_RUNTIME_WORK_SURFACE work = (AppMain.AMS_AME_RUNTIME_WORK_SURFACE)amsAmeCreateParam.work;
         work.time = -node.start_time;
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position, amsAmeCreateParam.position);
+        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
         AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity);
+        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         float sizeRate = amsAmeCreateParam.ecb.size_rate;
         work.width = node.width * sizeRate;
@@ -60,7 +60,7 @@ public partial class AppMain
         AppMain.nnMakeUnitMatrix(amEffectMtx);
         AppMain.amMatrixPush(amEffectMtx);
         AppMain.NNS_QUATERNION rotate = work.rotate;
-        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, (AppMain.NNS_VECTOR4D)null);
+        AppMain.amQuatToMatrix((AppMain.NNS_MATRIX)null, ref rotate, null);
         work.rotate = rotate;
         AppMain.NNS_VECTOR4D amEffectPosition = AppMain._amEffect_position;
         AppMain.NNS_VECTOR4D amEffectVelocity = AppMain._amEffect_velocity;

@@ -29,9 +29,9 @@ public partial class AppMain
 {
     public class AMS_TRAIL_PARTS
     {
-        public readonly AppMain.NNS_VECTOR pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR sub_pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR dir = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR sub_pos = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR dir = new AppMain.NNS_VECTOR();
         public ushort[] Dummy = new ushort[5];
         public float time;
         public AppMain.AMS_TRAIL_PARTS pNext;

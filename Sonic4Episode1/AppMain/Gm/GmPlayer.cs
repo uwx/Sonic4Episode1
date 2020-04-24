@@ -1279,10 +1279,10 @@ public partial class AppMain
 
     private static void GmPlayerSetLight(AppMain.NNS_VECTOR light_vec, ref AppMain.NNS_RGBA light_col)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         AppMain.nnNormalizeVector(nnsVector, light_vec);
         AppMain.ObjDrawSetParallelLight(AppMain.NNE_LIGHT_6, ref light_col, 1f, nnsVector);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private static void GmPlayerSetDefRimParam(AppMain.GMS_PLAYER_WORK ply_work)

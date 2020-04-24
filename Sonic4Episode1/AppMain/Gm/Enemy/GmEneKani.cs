@@ -152,7 +152,7 @@ public partial class AppMain
     {
         AppMain.OBS_RECT_WORK pRec = ((AppMain.GMS_ENEMY_3D_WORK)obj_work).ene_com.rect_work[1];
         AppMain.NNS_MATRIX nodeMatrix = AppMain.GmEneUtilGetNodeMatrix(((AppMain.GMS_ENE_KANI_WORK)obj_work).node_work, 16);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = nodeMatrix.M03 - AppMain.FX_FX32_TO_F32(obj_work.pos.x);
         nnsVector.y = nodeMatrix.M13 - AppMain.FX_FX32_TO_F32(-obj_work.pos.y);
         nnsVector.z = nodeMatrix.M23 - AppMain.FX_FX32_TO_F32(obj_work.pos.z);
@@ -165,14 +165,14 @@ public partial class AppMain
             obj_work.ppFunc = new AppMain.MPP_VOID_OBS_OBJECT_WORK(AppMain.gmEneKaniAttackEnd);
             AppMain.ObjDrawObjectActionSet(obj_work, 1);
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public static void gmEneKaniAttackEnd(AppMain.OBS_OBJECT_WORK obj_work)
     {
         AppMain.OBS_RECT_WORK pRec = ((AppMain.GMS_ENEMY_3D_WORK)obj_work).ene_com.rect_work[1];
         AppMain.NNS_MATRIX nodeMatrix = AppMain.GmEneUtilGetNodeMatrix(((AppMain.GMS_ENE_KANI_WORK)obj_work).node_work, 16);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         nnsVector.x = nodeMatrix.M03 - AppMain.FX_FX32_TO_F32(obj_work.pos.x);
         nnsVector.y = nodeMatrix.M13 - AppMain.FX_FX32_TO_F32(-obj_work.pos.y);
         nnsVector.z = nodeMatrix.M23 - AppMain.FX_FX32_TO_F32(obj_work.pos.z);
@@ -182,7 +182,7 @@ public partial class AppMain
         pRec.flag |= 4U;
         if (AppMain.GmBsCmnIsActionEnd(obj_work) != 0)
             obj_work.ppFunc = new AppMain.MPP_VOID_OBS_OBJECT_WORK(AppMain.gmEneKaniWalkInit);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     public static void gmEneKaniFwMain(AppMain.OBS_OBJECT_WORK obj_work)

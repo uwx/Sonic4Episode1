@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class NNS_OBJECT
     {
-        public readonly AppMain.NNS_VECTOR Center = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR Center = new AppMain.NNS_VECTOR();
         public float Radius;
         public int nMaterial;
         public AppMain.NNS_MATERIALPTR[] pMatPtrList;

@@ -32,9 +32,9 @@ public partial class AppMain
         public AppMain.NNS_RGBA Ambient = new AppMain.NNS_RGBA();
         public AppMain.NNS_RGBA Diffuse = new AppMain.NNS_RGBA();
         public AppMain.NNS_RGBA Specular = new AppMain.NNS_RGBA();
-        public AppMain.NNS_VECTOR Direction = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Direction = new AppMain.NNS_VECTOR();
         public AppMain.NNS_VECTOR4D Position = new AppMain.NNS_VECTOR4D();
-        public AppMain.NNS_VECTOR Target = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public AppMain.NNS_VECTOR Target = new AppMain.NNS_VECTOR();
         public int bEnable;
         public uint fType;
         public float Intensity;

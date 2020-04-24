@@ -126,12 +126,12 @@ public partial class AppMain
 
     private static void GmCameraDelaySet(float dly_x, float dly_y, float dly_z)
     {
-        AppMain.NNS_VECTOR ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR ofst = new AppMain.NNS_VECTOR();
         ofst.x = dly_x;
         ofst.y = dly_y;
         ofst.z = dly_z;
         AppMain.ObjCameraPlaySet(0, ofst);
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(ofst);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(ofst);
     }
 
     private static void GmCameraDelayReset()
@@ -365,11 +365,11 @@ public partial class AppMain
 
     private static void GmCameraTruckFunc(AppMain.OBS_CAMERA obj_camera)
     {
-        AppMain.NNS_VECTOR nnsVector1 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector1 = new AppMain.NNS_VECTOR();
         AppMain.GMS_PLAYER_WORK gmsPlayerWork = AppMain.g_gm_main_system.ply_work[0];
         if (((int)gmsPlayerWork.player_flag & 1024) != 0 && ((int)gmsPlayerWork.player_flag & 65536) == 0)
         {
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
         }
         else
         {
@@ -390,7 +390,7 @@ public partial class AppMain
                     obj_camera.pos.y = nnsVector1.y;
                     obj_camera.pos.z = nnsVector1.z;
                 }
-                AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+                //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
             }
             else
             {
@@ -466,7 +466,7 @@ public partial class AppMain
                 AppMain.gm_camera_vibration.y = AppMain.gmCameraVibCheck(AppMain.gm_camera_vibration.y);
                 AppMain.gm_camera_vibration.z = AppMain.gmCameraVibCheck(AppMain.gm_camera_vibration.z);
                 obj_camera.pos.z = 50f;
-                AppMain.NNS_VECTOR nnsVector2 = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+                AppMain.NNS_VECTOR nnsVector2 = new AppMain.NNS_VECTOR();
                 nnsVector2.x = obj_camera.ofst.x;
                 nnsVector2.y = obj_camera.ofst.y;
                 nnsVector2.z = obj_camera.ofst.z;
@@ -479,7 +479,7 @@ public partial class AppMain
                 obj_camera.disp_pos.x = obj_camera.pos.x + nnsVector2.x;
                 obj_camera.disp_pos.y = obj_camera.pos.y + nnsVector2.y;
                 obj_camera.disp_pos.z = obj_camera.pos.z + nnsVector2.z;
-                AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
+                //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector2);
                 AppMain.gmCameraLookupCheck(obj_camera);
                 float num1 = (float)AppMain.g_gm_main_system.map_fcol.left + (float)(AppMain.GSD_DISP_WIDTH / 2) * obj_camera.scale;
                 float num2 = (float)AppMain.g_gm_main_system.map_fcol.right - (float)(AppMain.GSD_DISP_WIDTH / 2) * obj_camera.scale;
@@ -531,7 +531,7 @@ public partial class AppMain
                 }
                 AppMain.ObjObjectCameraSet(AppMain.FXM_FLOAT_TO_FX32(obj_camera.disp_pos.x - (float)((int)AppMain.OBD_LCD_X / 2)), AppMain.FXM_FLOAT_TO_FX32(-obj_camera.disp_pos.y - (float)((int)AppMain.OBD_LCD_Y / 2)), AppMain.FXM_FLOAT_TO_FX32(obj_camera.disp_pos.x - (float)((int)AppMain.OBD_LCD_X / 2)), AppMain.FXM_FLOAT_TO_FX32(-obj_camera.disp_pos.y - (float)((int)AppMain.OBD_LCD_Y / 2)));
                 AppMain.GmCameraSetClipCamera(obj_camera);
-                AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
+                //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector1);
             }
         }
     }

@@ -27,15 +27,11 @@ using setting;
 
 public partial class AppMain
 {
-    public class NNS_VECTOR : AppMain.IClearable
+    public struct NNS_VECTOR : AppMain.IClearable
     {
         public float x;
         public float y;
         public float z;
-
-        public NNS_VECTOR()
-        {
-        }
 
         public NNS_VECTOR(float _x, float _y, float _z)
         {
@@ -93,7 +89,7 @@ public partial class AppMain
 
         public static AppMain.NNS_VECTOR Read(BinaryReader reader)
         {
-            AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
             nnsVector.x = reader.ReadSingle();
             nnsVector.y = reader.ReadSingle();
             nnsVector.z = reader.ReadSingle();

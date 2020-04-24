@@ -51,7 +51,7 @@ public partial class AppMain
             this.ame_idx = ame_idx;
             this.pos_type = pos_type;
             this.init_flag = init_flag;
-            this.disp_ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            this.disp_ofst = new AppMain.NNS_VECTOR();
             this.disp_ofst.Assign(disp_ofst);
             this.disp_rot = disp_rot;
             this.scale = scale;
@@ -61,7 +61,7 @@ public partial class AppMain
 
         public GMS_EFFECT_CREATE_PARAM()
         {
-            this.disp_ofst = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            this.disp_ofst = new AppMain.NNS_VECTOR();
             this.disp_rot = new AppMain.NNS_ROTATE_A16();
         }
 

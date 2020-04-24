@@ -787,7 +787,7 @@ public partial class AppMain
     private static void gmMainInitLight()
     {
         AppMain.NNS_RGBA col = new AppMain.NNS_RGBA(1f, 1f, 1f, 1f);
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         if (AppMain.g_gs_main_sys_info.stage_id == (ushort)2 || AppMain.g_gs_main_sys_info.stage_id == (ushort)3)
         {
             AppMain.g_obj.ambient_color.r = 1f;
@@ -861,7 +861,7 @@ public partial class AppMain
             AppMain.GmBoss5LandSetLight();
             AppMain.GmDecoSetLightFinalZone();
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private static void gmMainPre(AppMain.MTS_TASK_TCB tcb)

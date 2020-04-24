@@ -29,8 +29,8 @@ public partial class AppMain
 {
     public class NNS_COMMON_PNW2
     {
-        public readonly AppMain.NNS_VECTOR Pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
-        public readonly AppMain.NNS_VECTOR Nrm = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        public readonly AppMain.NNS_VECTOR Pos = new AppMain.NNS_VECTOR();
+        public readonly AppMain.NNS_VECTOR Nrm = new AppMain.NNS_VECTOR();
         public readonly AppMain.NNS_COMMON_WEIGHT2 Wgt = new AppMain.NNS_COMMON_WEIGHT2();
     }
 }

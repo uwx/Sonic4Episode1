@@ -75,10 +75,10 @@ public partial class AppMain
             return;
         if (AppMain.obj_camera_sys.obj_camera[cam_id] == null)
         {
-            AppMain.NNS_VECTOR pos = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+            AppMain.NNS_VECTOR pos = new AppMain.NNS_VECTOR();
             if (AppMain.ObjCameraInit(cam_id, pos, 0, (ushort)0, 61438) == -1)
                 return;
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(pos);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(pos);
         }
         AppMain.OBS_CAMERA obj_camera = AppMain.obj_camera_sys.obj_camera[cam_id];
         obj_camera.flag |= 16U;
@@ -257,7 +257,7 @@ public partial class AppMain
     {
         if (AppMain.ObjObjectPauseCheck(0U) != 0U)
             return;
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         for (int index = 0; index < 8; ++index)
         {
             AppMain.OBS_CAMERA obsCamera = AppMain.obj_camera_sys.obj_camera[index];
@@ -333,12 +333,12 @@ public partial class AppMain
                 }
             }
         }
-        AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+        //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
     }
 
     private static void objCameraMove(AppMain.OBS_CAMERA obj_camera)
     {
-        AppMain.NNS_VECTOR nnsVector = AppMain.GlobalPool<AppMain.NNS_VECTOR>.Alloc();
+        AppMain.NNS_VECTOR nnsVector = new AppMain.NNS_VECTOR();
         if (obj_camera.target_obj != null)
         {
             nnsVector.x = AppMain.FXM_FX32_TO_FLOAT(obj_camera.target_obj.pos.x) + obj_camera.target_ofst.x;
@@ -422,7 +422,7 @@ public partial class AppMain
             if ((double)Math.Abs(nnsVector.z - obj_camera.pos.z) > (double)obj_camera.play_ofst_max.z)
                 obj_camera.pos.z = (double)nnsVector.z <= (double)obj_camera.pos.z ? nnsVector.z + obj_camera.play_ofst_max.z : nnsVector.z - obj_camera.play_ofst_max.z;
             obj_camera.pos.z += obj_camera.ofst.z;
-            AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
+            //AppMain.GlobalPool<AppMain.NNS_VECTOR>.Release(nnsVector);
         }
     }
 

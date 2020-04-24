@@ -29,7 +29,7 @@ public partial class AppMain
 {
     public class GMS_BS_CMN_NODE_CTRL_OBJECT : AppMain.IOBS_OBJECT_WORK
     {
-        public readonly AppMain.NNS_VECTOR user_ofst = new AppMain.NNS_VECTOR();
+        public AppMain.NNS_VECTOR user_ofst = new AppMain.NNS_VECTOR();
         public readonly AppMain.NNS_MATRIX w_mtx = AppMain.GlobalPool<AppMain.NNS_MATRIX>.Alloc();
         public object m_pHolder;
         public readonly AppMain.GMS_EFFECT_COM_WORK efct_com;
