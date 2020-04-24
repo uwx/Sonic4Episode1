@@ -101,14 +101,14 @@ public partial class AppMain
         AppMain.mppAssertNotImpl();
     }
 
-    public static void amEffectRandomConeVectorDeg(AppMain.NNS_VECTOR4D pOut, float s)
+    public static void amEffectRandomConeVectorDeg(ref AppMain.NNS_VECTOR4D pOut, float s)
     {
         float pCs = AppMain.nnCos(AppMain.NNM_DEGtoA32(s));
         float y = AppMain.nnRandom() * (1f - pCs) + pCs;
         float num1 = (float)Math.Sqrt(1.0 - (double)y * (double)y);
         AppMain.amSinCos(AppMain.nnRandom() * 6.283185f, out s, out pCs);
         AppMain.amVectorSet(pOut, num1 * pCs, y, num1 * s);
-        double num2 = (double)AppMain.amVectorUnit(pOut);
+        double num2 = (double)AppMain.amVectorUnit(ref pOut);
     }
 
     private void _amConnectLinkToHead(AppMain.AMS_AME_LIST head, AppMain.AMS_AME_LIST list)
@@ -253,12 +253,12 @@ public partial class AppMain
 
     public static void amEffectSetCameraPos(ref AppMain.SNNS_VECTOR pos)
     {
-        AppMain.nnCopyVector(AppMain._am_ef_camPos, ref pos);
+        AppMain.nnCopyVector(ref AppMain._am_ef_camPos, ref pos);
     }
 
     public static void amEffectSetCameraPos(AppMain.NNS_VECTOR pos)
     {
-        AppMain.nnCopyVector(AppMain._am_ef_camPos, pos);
+        AppMain.nnCopyVector(ref AppMain._am_ef_camPos, pos);
     }
 
     private void amEffectEnableDraw(int flag)
@@ -323,7 +323,7 @@ public partial class AppMain
         amsAmeEcb.priority = priority;
         amsAmeEcb.transparency = 256;
         amsAmeEcb.size_rate = 1f;
-        AppMain.amVectorInit(amsAmeEcb.translate);
+        AppMain.amVectorInit(ref amsAmeEcb.translate);
         AppMain.amQuatInit(ref amsAmeEcb.rotate);
         amsAmeEcb.bounding.Assign(header.bounding);
         AppMain.AMS_AME_ECB next = (AppMain.AMS_AME_ECB)AppMain._am_ecb_head.next;
@@ -336,7 +336,7 @@ public partial class AppMain
         AppMain.AMS_AME_CREATE_PARAM amsAmeCreateParam = new AppMain.AMS_AME_CREATE_PARAM();
         AppMain.NNS_VECTOR4D amEffectCreateVec = AppMain._amEffectCreate_vec;
         AppMain.AMS_AME_NODE sibling = header.node[0];
-        AppMain.amVectorInit(amEffectCreateVec);
+        AppMain.amVectorInit(ref amEffectCreateVec);
         for (; sibling != null; sibling = sibling.sibling)
         {
             amsAmeCreateParam.ecb = amsAmeEcb;
@@ -615,22 +615,22 @@ public partial class AppMain
       AppMain.AMS_AME_ECB ecb,
       ref AppMain.SNNS_VECTOR4D translate)
     {
-        AppMain.amVectorCopy(ecb.translate, ref translate);
+        AppMain.amVectorCopy(ref ecb.translate, ref translate);
         for (AppMain.AMS_AME_ENTRY amsAmeEntry = ecb.entry_head; amsAmeEntry != null; amsAmeEntry = (AppMain.AMS_AME_ENTRY)amsAmeEntry.next)
         {
             AppMain.AMS_AME_RUNTIME runtime = amsAmeEntry.runtime;
             if ((runtime.state & 8192) != 0 && ((int)runtime.node.flag & 67108864) == 0)
             {
                 if (runtime.work != null)
-                    AppMain.amVectorAdd((AppMain.NNS_VECTOR)runtime.work.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
+                    AppMain.amVectorAdd(ref runtime.work.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
                 if ((int)runtime.work_num + (int)runtime.active_num != 0)
                 {
                     AppMain.AMS_AME_RUNTIME_WORK next1 = (AppMain.AMS_AME_RUNTIME_WORK)runtime.work_head.next;
                     for (AppMain.AMS_AME_RUNTIME_WORK workTail = (AppMain.AMS_AME_RUNTIME_WORK)runtime.work_tail; next1 != workTail; next1 = (AppMain.AMS_AME_RUNTIME_WORK)next1.next)
-                        AppMain.amVectorAdd((AppMain.NNS_VECTOR)next1.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
+                        AppMain.amVectorAdd(ref next1.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
                     AppMain.AMS_AME_RUNTIME_WORK next2 = (AppMain.AMS_AME_RUNTIME_WORK)runtime.active_head.next;
                     for (AppMain.AMS_AME_RUNTIME_WORK activeTail = (AppMain.AMS_AME_RUNTIME_WORK)runtime.active_tail; next2 != activeTail; next2 = (AppMain.AMS_AME_RUNTIME_WORK)next2.next)
-                        AppMain.amVectorAdd((AppMain.NNS_VECTOR)next2.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
+                        AppMain.amVectorAdd(ref next2.position, ((AppMain.AMS_AME_NODE_TR_ROT)runtime.node).translate, ref translate);
                 }
             }
         }

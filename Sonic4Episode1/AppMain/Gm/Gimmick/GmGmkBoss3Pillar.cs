@@ -912,10 +912,10 @@ public partial class AppMain
         setParam.ablend = 0;
         setParam.noSort = (short)1;
         AppMain.NNS_PRIM3D_PC[] nnsPriM3DPcArray = AppMain.amDrawAlloc_NNS_PRIM3D_PC(6);
-        AppMain.amVectorSet(nnsPriM3DPcArray[0], left, top, z);
-        AppMain.amVectorSet(nnsPriM3DPcArray[1], right, top, z);
-        AppMain.amVectorSet(nnsPriM3DPcArray[2], left, bottom, z);
-        AppMain.amVectorSet(nnsPriM3DPcArray[5], right, bottom, z);
+        AppMain.amVectorSet(ref nnsPriM3DPcArray[0], left, top, z);
+        AppMain.amVectorSet(ref nnsPriM3DPcArray[1], right, top, z);
+        AppMain.amVectorSet(ref nnsPriM3DPcArray[2], left, bottom, z);
+        AppMain.amVectorSet(ref nnsPriM3DPcArray[5], right, bottom, z);
         uint num = AppMain.AMD_RGBA8888((byte)0, (byte)0, (byte)0, byte.MaxValue);
         nnsPriM3DPcArray[0].Col = num;
         nnsPriM3DPcArray[1].Col = num;

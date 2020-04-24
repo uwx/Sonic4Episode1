@@ -458,15 +458,15 @@ public partial class AppMain
         AppMain.nnMultiplyQuaternion(ref nnsQuaternion1, ref nnsQuaternion2, ref quat2);
         if (pVec == null)
         {
-            AppMain.VEC4_COPY(pDst, ref nnsQuaternion1);
+            AppMain.VEC4_COPY(ref pDst, ref nnsQuaternion1);
         }
         else
         {
             AppMain.NNS_VECTOR4D nnsVectoR4D = new AppMain.NNS_VECTOR4D();
             AppMain.NNS_VECTOR4D pV2 = new AppMain.NNS_VECTOR4D();
-            AppMain.VEC4_COPY(nnsVectoR4D, ref nnsQuaternion1);
-            AppMain.VEC4_COPY((AppMain.NNS_VECTOR)pV2, (AppMain.NNS_VECTOR)pVec);
-            AppMain.amVectorAdd(pDst, nnsVectoR4D, pV2);
+            AppMain.VEC4_COPY(ref nnsVectoR4D, ref nnsQuaternion1);
+            AppMain.VEC4_COPY(ref pV2, (AppMain.NNS_VECTOR)pVec);
+            AppMain.amVectorAdd(ref pDst, nnsVectoR4D, pV2);
             //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(nnsVectoR4D);
             //AppMain.GlobalPool<AppMain.NNS_VECTOR4D>.Release(pV2);
         }

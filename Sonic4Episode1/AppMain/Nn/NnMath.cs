@@ -156,7 +156,7 @@ public partial class AppMain
     }
 
     public static void nnAddVector(
-      AppMain.NNS_VECTOR dst,
+      ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_VECTOR vec1,
       AppMain.NNS_VECTOR vec2)
     {
@@ -239,7 +239,7 @@ public partial class AppMain
     }
 
     public static void nnCrossProductVector(
-      AppMain.NNS_VECTOR dst,
+        ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_VECTOR vec1,
       AppMain.NNS_VECTOR vec2)
     {
@@ -251,17 +251,27 @@ public partial class AppMain
         dst.z = num3;
     }
 
-    public static void nnCopyVector(AppMain.NNS_VECTOR dst, ref AppMain.SNNS_VECTOR src)
+    public static void nnCopyVector(ref AppMain.NNS_VECTOR dst, ref AppMain.SNNS_VECTOR src)
     {
         dst.Assign(ref src);
     }
 
-    public static void nnCopyVector(AppMain.NNS_VECTOR dst, ref AppMain.SNNS_VECTOR4D src)
+    public static void nnCopyVector(ref AppMain.NNS_VECTOR4D dst, ref AppMain.SNNS_VECTOR4D src)
     {
         dst.Assign(ref src);
     }
 
-    public static void nnCopyVector(AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src)
+    public static void nnCopyVector(ref AppMain.NNS_VECTOR4D dst, ref AppMain.NNS_VECTOR4D src)
+    {
+        dst.Assign(ref src);
+    }
+
+    public static void nnCopyVector(ref AppMain.NNS_VECTOR dst, ref AppMain.SNNS_VECTOR4D src)
+    {
+        dst.Assign(ref src);
+    }
+
+    public static void nnCopyVector(ref AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src)
     {
         dst.Assign(src);
     }
@@ -344,7 +354,7 @@ public partial class AppMain
         return (float)((double)num1 * (double)num1 + (double)num2 * (double)num2 + (double)num3 * (double)num3);
     }
 
-    public static int nnNormalizeVector(AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src)
+    public static int nnNormalizeVector(ref AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src)
     {
         float n = AppMain.nnLengthSqVector(src);
         if ((double)n == 0.0)
@@ -422,7 +432,7 @@ public partial class AppMain
         dst.z = src.z * scale;
     }
 
-    public static void nnScaleVector(AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src, float scale)
+    public static void nnScaleVector(ref AppMain.NNS_VECTOR dst, AppMain.NNS_VECTOR src, float scale)
     {
         dst.x = src.x * scale;
         dst.y = src.y * scale;
@@ -430,7 +440,7 @@ public partial class AppMain
     }
 
     public static void nnScaleAddVector(
-      AppMain.NNS_VECTOR dst,
+        ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_VECTOR vec1,
       AppMain.NNS_VECTOR vec2,
       float scale)
@@ -444,7 +454,7 @@ public partial class AppMain
     }
 
     public static void nnSubtractVector(
-      AppMain.NNS_VECTOR dst,
+        ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_VECTOR vec1,
       AppMain.NNS_VECTOR vec2)
     {
@@ -517,7 +527,7 @@ public partial class AppMain
     }
 
     private static void nnTransformVector(
-      AppMain.NNS_VECTOR dst,
+        ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_MATRIX mtx,
       AppMain.NNS_VECTOR src)
     {
@@ -582,7 +592,7 @@ public partial class AppMain
     }
 
     private static void nnTransformVector(
-      AppMain.NNS_VECTOR4D dst,
+      ref AppMain.NNS_VECTOR4D dst,
       AppMain.NNS_MATRIX mtx,
       AppMain.NNS_VECTOR4D src)
     {
@@ -608,7 +618,7 @@ public partial class AppMain
     }
 
     private static void nnTransformNormalVector(
-      AppMain.NNS_VECTOR dst,
+      ref AppMain.NNS_VECTOR dst,
       AppMain.NNS_MATRIX mtx,
       AppMain.NNS_VECTOR src)
     {
@@ -621,7 +631,7 @@ public partial class AppMain
     }
 
     private static void nnTransformNormalVector(
-      AppMain.NNS_VECTOR4D dst,
+      ref AppMain.NNS_VECTOR4D dst,
       AppMain.NNS_MATRIX mtx,
       AppMain.NNS_VECTOR4D src)
     {
@@ -698,7 +708,7 @@ public partial class AppMain
     }
 
     private static void nnCopyMatrixTranslationVector(
-      AppMain.NNS_VECTOR dst,
+        ref AppMain.NNS_VECTOR dst,
       ref AppMain.SNNS_MATRIX mtx)
     {
         dst.x = mtx.M03;
@@ -781,7 +791,7 @@ public partial class AppMain
     }
 
     private void nnMakeCameraPointerPerspectiveMatrix(
-      AppMain.NNS_MATRIX dst,
+      ref AppMain.NNS_MATRIX dst,
       AppMain.NNS_CAMERAPTR camptr)
     {
         AppMain.mppAssertNotImpl();

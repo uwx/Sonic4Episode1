@@ -18,9 +18,9 @@ public partial class AppMain
         AppMain.AMS_AME_RUNTIME_WORK_OMNI work = (AppMain.AMS_AME_RUNTIME_WORK_OMNI)amsAmeCreateParam.work;
         work.time = -node.start_time;
         AppMain.amVectorAdd(ref work.position, ref amsAmeCreateParam.parent_position.UnsafeValue, ref amsAmeCreateParam.position.UnsafeValue);
-        AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
+        AppMain.amVectorAdd(ref work.position, node.translate);
+        AppMain.amVectorScale(ref work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(ref work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         float sizeRate = amsAmeCreateParam.ecb.size_rate;
         work.offset = node.offset * sizeRate;
@@ -39,8 +39,8 @@ public partial class AppMain
         if ((double)node.life != -1.0 && (double)work.time >= (double)node.life)
             return 1;
         AppMain.NNS_VECTOR4D amEffectVel = AppMain._amEffect_vel;
-        AppMain.amVectorScale(amEffectVel, work.velocity, AppMain._am_unit_time);
-        AppMain.amVectorAdd(work.position, amEffectVel);
+        AppMain.amVectorScale(ref amEffectVel, work.velocity, AppMain._am_unit_time);
+        AppMain.amVectorAdd(ref work.position, amEffectVel);
         float sizeRate = amsAmeRuntime1.ecb.size_rate;
         work.offset = node.offset * sizeRate;
         work.offset_chaos = node.offset_chaos * sizeRate;
@@ -60,10 +60,10 @@ public partial class AppMain
                 {
                     AppMain.AMS_AME_CREATE_PARAM effectCreateParam = AppMain._amEffect_create_param;
                     effectCreateParam.Clear();
-                    AppMain.amVectorRandom(amEffectDirection);
-                    AppMain.amVectorScale(amEffectVelocity, amEffectDirection, work.offset + work.offset_chaos * AppMain.nnRandom());
+                    AppMain.amVectorRandom(ref amEffectDirection);
+                    AppMain.amVectorScale(ref amEffectVelocity, amEffectDirection, work.offset + work.offset_chaos * AppMain.nnRandom());
                     amEffectPosition.Assign(amEffectVelocity);
-                    AppMain.amVectorScale(amEffectVelocity, amEffectDirection, node.speed + node.speed_chaos * AppMain.nnRandom());
+                    AppMain.amVectorScale(ref amEffectVelocity, amEffectDirection, node.speed + node.speed_chaos * AppMain.nnRandom());
                     effectCreateParam.ecb = amsAmeRuntime1.ecb;
                     effectCreateParam.runtime = amsAmeRuntime2;
                     effectCreateParam.node = amsAmeRuntime2.node;
@@ -99,10 +99,10 @@ public partial class AppMain
         AppMain.AMS_AME_NODE_DIRECTIONAL node = (AppMain.AMS_AME_NODE_DIRECTIONAL)amsAmeCreateParam.node;
         AppMain.AMS_AME_RUNTIME_WORK_DIRECTIONAL work = (AppMain.AMS_AME_RUNTIME_WORK_DIRECTIONAL)amsAmeCreateParam.work;
         work.time = -node.start_time;
-        AppMain.amVectorAdd(work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
-        AppMain.amVectorAdd(work.position, node.translate);
-        AppMain.amVectorScale(work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
-        AppMain.amVectorAdd(work.velocity, amsAmeCreateParam.velocity.Value);
+        AppMain.amVectorAdd(ref work.position, amsAmeCreateParam.parent_position.Value, amsAmeCreateParam.position.Value);
+        AppMain.amVectorAdd(ref work.position, node.translate);
+        AppMain.amVectorScale(ref work.velocity, amsAmeCreateParam.parent_velocity.Value, node.inheritance_rate);
+        AppMain.amVectorAdd(ref work.velocity, amsAmeCreateParam.velocity.Value);
         work.rotate = node.rotate;
         work.spread = node.spread;
         return 0;
@@ -119,8 +119,8 @@ public partial class AppMain
         if ((double)node.life != -1.0 && (double)runtimeWorkDirectional.time >= (double)node.life)
             return 1;
         AppMain.NNS_VECTOR4D amEffectVel = AppMain._amEffect_vel;
-        AppMain.amVectorScale(amEffectVel, runtimeWorkDirectional.velocity, AppMain._am_unit_time);
-        AppMain.amVectorAdd(runtimeWorkDirectional.position, amEffectVel);
+        AppMain.amVectorScale(ref amEffectVel, runtimeWorkDirectional.velocity, AppMain._am_unit_time);
+        AppMain.amVectorAdd(ref runtimeWorkDirectional.position, amEffectVel);
         runtimeWorkDirectional.spread += node.spread_variation * AppMain._am_unit_time;
         AppMain.NNS_MATRIX amEffectMtx = AppMain._amEffect_mtx;
         AppMain.nnMakeUnitMatrix(amEffectMtx);
@@ -145,11 +145,11 @@ public partial class AppMain
                 {
                     AppMain.AMS_AME_CREATE_PARAM effectCreateParam = AppMain._amEffect_create_param;
                     effectCreateParam.Clear();
-                    AppMain.amEffectRandomConeVectorDeg(amEffectDirection, runtimeWorkDirectional.spread);
+                    AppMain.amEffectRandomConeVectorDeg(ref amEffectDirection, runtimeWorkDirectional.spread);
                     AppMain.amMatrixCalcPoint(amEffectDirection, amEffectDirection);
-                    AppMain.amVectorScale(amEffectVelocity, amEffectDirection, node.offset + node.offset_chaos * AppMain.nnRandom());
+                    AppMain.amVectorScale(ref amEffectVelocity, ref amEffectDirection, node.offset + node.offset_chaos * AppMain.nnRandom());
                     amEffectPosition.Assign(amEffectVelocity);
-                    AppMain.amVectorScale(amEffectVelocity, amEffectDirection, node.speed + node.speed_chaos * AppMain.nnRandom());
+                    AppMain.amVectorScale(ref amEffectVelocity, ref amEffectDirection, node.speed + node.speed_chaos * AppMain.nnRandom());
                     effectCreateParam.ecb = amsAmeRuntime1.ecb;
                     effectCreateParam.runtime = amsAmeRuntime2;
                     effectCreateParam.node = amsAmeRuntime2.node;
